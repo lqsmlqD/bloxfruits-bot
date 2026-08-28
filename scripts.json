@@ -1,0 +1,2446 @@
+[
+    {
+        "_id": "6a31d6baf5b87e7a1c325dca",
+        "title": "Snowy Hub 40+ Games & 600+ Features",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Snowy-Hub-237438",
+        "verified": true,
+        "key": true,
+        "views": 1070961,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1787553958925.jpg",
+        "lastBump": "2026-08-28T18:00:45.628Z",
+        "likeCount": 98,
+        "dislikeCount": 13,
+        "createdAt": "2026-06-16T23:05:30.429Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Snowy-Hub-237438\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "69029467fd07bf538644b461",
+        "title": "Ronix Hub | 154+ Supported Games + OP!",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Radius-Hub-15-Games-61719",
+        "verified": true,
+        "key": true,
+        "views": 298220,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769989790940.png",
+        "lastBump": "2026-08-28T17:23:41.658Z",
+        "likeCount": 198,
+        "dislikeCount": 19,
+        "createdAt": "2025-10-29T22:25:43.235Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Radius-Hub-15-Games-61719\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6a7b2fd1305eba3a3cb390c7",
+        "title": "Lumin hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Lumin-hub-223416",
+        "verified": true,
+        "key": true,
+        "views": 26382,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-08-28T08:43:50.712Z",
+        "likeCount": 27,
+        "dislikeCount": 1,
+        "createdAt": "2026-08-11T14:21:05.187Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Lumin-hub-223416\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "6a43e3edf80032f969ececfb",
+        "title": "Flow Hub | 23 Games | Updated",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Flow-ScriptHub-20-Games-240374",
+        "verified": true,
+        "key": true,
+        "views": 539236,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1786726549842.png",
+        "lastBump": "2026-08-28T03:49:58.944Z",
+        "likeCount": 34,
+        "dislikeCount": 5,
+        "createdAt": "2026-06-30T15:42:37.338Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Flow-ScriptHub-20-Games-240374\"))()",
+        "matched": []
+    },
+    {
+        "_id": "680bf5408a886f65e3e67bb1",
+        "title": "BEST SCRIPT FULL XENO DELTA 180+ STACKING FEATURES FREE OP",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "GRAVITY-Blox-Fruits-BEST-SCRIPT-SOLARA-AND-XENO-AUTO-V4-AUTO-LEVEL-AUTO-RAID-37566",
+        "verified": true,
+        "key": true,
+        "views": 3044306,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/2753915549-1775777816748.jpg",
+        "lastBump": "2026-08-28T01:58:31.895Z",
+        "likeCount": 180,
+        "dislikeCount": 27,
+        "createdAt": "2025-04-25T20:49:04.130Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/GRAVITY-Blox-Fruits-BEST-SCRIPT-SOLARA-AND-XENO-AUTO-V4-AUTO-LEVEL-AUTO-RAID-37566\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "698bdd8275af53480cc66b0b",
+        "title": "BloxFruits Dungoens Sea events auto farm Auto All (UPDATED)",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-BloxFruits-Dungoens-Sea-events-auto-farm-Auto-All-110067",
+        "verified": true,
+        "key": true,
+        "views": 160105,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-08-27T02:48:13.076Z",
+        "likeCount": 148,
+        "dislikeCount": 13,
+        "createdAt": "2026-02-11T01:38:10.670Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-BloxFruits-Dungoens-Sea-events-auto-farm-Auto-All-110067\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "683b3949a348d24efdf83b72",
+        "title": "Forge Hub | 40+ Games, OP Features & Auto Farms",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Forge-Hub-41461",
+        "verified": true,
+        "key": true,
+        "views": 5234447,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1781532607378.png",
+        "lastBump": "2026-08-26T22:22:07.429Z",
+        "likeCount": 81,
+        "dislikeCount": 46,
+        "createdAt": "2025-05-31T17:15:53.512Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Forge-Hub-41461\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "68447e8c343da7b99706513e",
+        "title": "Atherhub | 25+ Games | Overpowered, Undetected, FREE",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Atherhub-41929",
+        "verified": true,
+        "key": true,
+        "views": 3394440,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1783380114607.webp",
+        "lastBump": "2026-08-26T14:28:17.879Z",
+        "likeCount": 80,
+        "dislikeCount": 42,
+        "createdAt": "2025-06-07T18:01:48.299Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Atherhub-41929\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "6a21c49c4c93a95c739d79e4",
+        "title": "Rift V3 *OP* | 6+ GAMES, AUTO FARMING & MORE",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-roblox-script-228829",
+        "verified": true,
+        "key": true,
+        "views": 80155,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1780597916607.jpg",
+        "lastBump": "2026-08-26T12:33:51.790Z",
+        "likeCount": 17,
+        "dislikeCount": 6,
+        "createdAt": "2026-06-04T18:31:56.623Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-roblox-script-228829\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "695a2fbd50e995aab15a39f5",
+        "title": "Lumin Hub | GAG2 FREE PET FINDER | ROLLBACK",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Lumin-Hub-81656",
+        "verified": true,
+        "key": true,
+        "views": 137543,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1784048429705.png",
+        "lastBump": "2026-08-26T10:48:34.492Z",
+        "likeCount": 47,
+        "dislikeCount": 17,
+        "createdAt": "2026-01-04T09:15:41.248Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Lumin-Hub-81656\"))()",
+        "matched": []
+    },
+    {
+        "_id": "69530e2d426a0c4abcfb1e6d",
+        "title": "Axon Hub 60+ Games & 800+ Features",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Axon-Hub-79767",
+        "verified": true,
+        "key": true,
+        "views": 155358,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/-1-1787597921173.png",
+        "lastBump": "2026-08-26T08:52:31.985Z",
+        "likeCount": 10,
+        "dislikeCount": 19,
+        "createdAt": "2025-12-29T23:26:37.700Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Axon-Hub-79767\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6951e53840f162cbcfbac2d4",
+        "title": "Atherhub | Most Feature | Auto Level | Auto Raid | 15+ Games",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Atherhub-Auto-Level-Auto-Raid-Auto-Boss-BEST-Script-79550",
+        "verified": true,
+        "key": true,
+        "views": 253043,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-9562aea76052b8e6690596750b666b26/480/270/Image/Png/noFilter",
+        "lastBump": "2026-08-23T15:44:52.380Z",
+        "likeCount": 188,
+        "dislikeCount": 33,
+        "createdAt": "2025-12-29T02:19:36.319Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Atherhub-Auto-Level-Auto-Raid-Auto-Boss-BEST-Script-79550\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "6a396b6c880df468c28bfc88",
+        "title": "Snowy Hub | Auto Farm, Kill Aura, TP & More",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Snowy-Hub-Auto-Farm-Kill-Aura-Bring-Mob-More-238694",
+        "verified": true,
+        "key": true,
+        "views": 18778,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-08-16T17:44:16.534Z",
+        "likeCount": 12,
+        "dislikeCount": 0,
+        "createdAt": "2026-06-22T17:05:48.603Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Snowy-Hub-Auto-Farm-Kill-Aura-Bring-Mob-More-238694\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "694c1f981b0a1506b3265a54",
+        "title": "Forge Hub |  OP Auto Farms, Raids, Mastery+",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Control-Blox-Fruits-OP-FREE-GUI-77953",
+        "verified": true,
+        "key": true,
+        "views": 166980,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-9562aea76052b8e6690596750b666b26/480/270/Image/Png/noFilter",
+        "lastBump": "2026-08-15T13:58:27.297Z",
+        "likeCount": 85,
+        "dislikeCount": 20,
+        "createdAt": "2025-12-24T17:15:04.852Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Control-Blox-Fruits-OP-FREE-GUI-77953\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "6a5f7662e74f9ef353ac1c36",
+        "title": "Blox fruit SEA FARM AUTO KITSUNE AUTO V4 AUTO MIRAGE ISLAND",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Blox-fruit-SEA-FARM-AUTO-KITSUNE-AUTO-V4-AUTO-MIRAGE-ISLAND-244596",
+        "verified": true,
+        "key": true,
+        "views": 21097,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-07-25T16:04:04.790Z",
+        "likeCount": 10,
+        "dislikeCount": 2,
+        "createdAt": "2026-07-21T13:38:42.119Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Blox-fruit-SEA-FARM-AUTO-KITSUNE-AUTO-V4-AUTO-MIRAGE-ISLAND-244596\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "69382863d9a0d1f6b3bb044a",
+        "title": "Best *OP* Auto Farm Auto Quest Bloxfruits Auto Chest",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Best-Autofarm-GUI-Script-73691",
+        "verified": true,
+        "key": true,
+        "views": 116525,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-07-19T17:51:03.561Z",
+        "likeCount": 169,
+        "dislikeCount": 16,
+        "createdAt": "2025-12-09T13:47:15.994Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Best-Autofarm-GUI-Script-73691\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "6a5c115701bb9253c403c2b0",
+        "title": "Rift *OP* | Auto Farm, Teleports, Raids & More",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-BF-Script-244068",
+        "verified": true,
+        "key": true,
+        "views": 10181,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-07-18T23:50:47.902Z",
+        "likeCount": 2,
+        "dislikeCount": 3,
+        "createdAt": "2026-07-18T23:50:47.905Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-BF-Script-244068\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "6a3b0a319008c4fc06c284ef",
+        "title": "MAI Hub Multi games and Universal",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-MAI-Hub-Multi-games-and-Universal-239037",
+        "verified": false,
+        "key": true,
+        "views": 12322,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1782254129327.png",
+        "lastBump": "2026-08-26T19:03:29.952Z",
+        "likeCount": 3,
+        "dislikeCount": 1,
+        "createdAt": "2026-06-23T22:35:29.352Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-MAI-Hub-Multi-games-and-Universal-239037\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "6a82b981dc2094b1bdb6bfa8",
+        "title": "Best Auto Chest Keyless",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Best-Auto-Chest-Keyless-224205",
+        "verified": false,
+        "key": false,
+        "views": 1923,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1786952065372.png",
+        "lastBump": "2026-08-17T07:34:25.371Z",
+        "likeCount": 4,
+        "dislikeCount": 0,
+        "createdAt": "2026-08-17T07:34:25.386Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Best-Auto-Chest-Keyless-224205\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6a81a5d9fc79fd7eb040bdc0",
+        "title": "Wizard hub Universal hub For all games",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Wizard-hub-Universal-hub-For-all-games-224066",
+        "verified": false,
+        "key": true,
+        "views": 2035,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1786881497393.png",
+        "lastBump": "2026-08-16T11:58:17.390Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-08-16T11:58:17.433Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Wizard-hub-Universal-hub-For-all-games-224066\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6a3609e126185156f2c98c5c",
+        "title": "Axonic Keyless",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Axonic-Keyless-Xeno-Supported-238259",
+        "verified": true,
+        "key": false,
+        "views": 44630,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter",
+        "lastBump": "2026-07-05T22:16:43.764Z",
+        "likeCount": 13,
+        "dislikeCount": 4,
+        "createdAt": "2026-06-20T03:32:49.049Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Axonic-Keyless-Xeno-Supported-238259\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "69c9313628e07ada8ada13d1",
+        "title": "Best *OP* Inf Candy Dupe Eggs Auto Farm Working",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-INF-CANDY-EGGS-DUPE-WORKING-OP-161110",
+        "verified": true,
+        "key": true,
+        "views": 20660,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": true,
+        "image": "/images/script/2753915549-1784514952287.png",
+        "lastBump": "2026-04-24T09:06:13.418Z",
+        "likeCount": 129,
+        "dislikeCount": 3,
+        "createdAt": "2026-03-29T14:03:34.599Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-INF-CANDY-EGGS-DUPE-WORKING-OP-161110\"))()",
+        "matched": [
+            "features",
+            "game"
+        ]
+    },
+    {
+        "_id": "69b446959994db35193692e5",
+        "title": "ADMINUS  Fruit Sniper",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-ADMINUS-Fruit-Sniper-138565",
+        "verified": true,
+        "key": false,
+        "views": 17960,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/2753915549-1773422229409.png",
+        "lastBump": "2026-03-29T23:03:15.860Z",
+        "likeCount": 5,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-13T17:17:09.430Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-ADMINUS-Fruit-Sniper-138565\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "6a49c0810ecf596fd5ebff69",
+        "title": "Prixy quantum",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Prixy-quantum-241307",
+        "verified": false,
+        "key": false,
+        "views": 10342,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1783218305713.png",
+        "lastBump": "2026-07-05T02:25:05.711Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-07-05T02:25:05.724Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Prixy-quantum-241307\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6a467ae5caa09e6b0b59cdda",
+        "title": "Quantum Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Quantum-Hub-240770",
+        "verified": false,
+        "key": false,
+        "views": 21186,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1783003877749.png",
+        "lastBump": "2026-07-02T14:51:17.748Z",
+        "likeCount": 3,
+        "dislikeCount": 1,
+        "createdAt": "2026-07-02T14:51:17.767Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Quantum-Hub-240770\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "6a3983a7b5d8a7c2c09da02d",
+        "title": "Fight in school WizardHub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d55",
+            "gameId": 17698425045,
+            "name": "[UPD] fight in a school",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-7673b5e1c0a3a7b07c67aa457adf05ea/480/270/Image/Png/noFilter"
+        },
+        "slug": "BOSS-fight-in-a-school-Fight-in-school-WizardHub-238717",
+        "verified": false,
+        "key": true,
+        "views": 6384,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/17698425045-1782154151890.webp",
+        "lastBump": "2026-06-22T18:49:11.889Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-06-22T18:49:11.911Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/BOSS-fight-in-a-school-Fight-in-school-WizardHub-238717\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6a360a446d8d34f61825b4e7",
+        "title": "Quantum Onyx",
+        "game": {
+            "_id": "6951b2f631e76adf31e45245",
+            "gameId": 15141564938,
+            "name": "Blox Fruits But Cheap",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-3dafe39c39ea968b311d1e14a0ade20e/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-But-Cheap-Quantum-Onyx-238260",
+        "verified": false,
+        "key": false,
+        "views": 6974,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-3dafe39c39ea968b311d1e14a0ade20e/480/270/Image/Png/noFilter",
+        "lastBump": "2026-06-20T03:34:28.867Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-06-20T03:34:28.869Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-But-Cheap-Quantum-Onyx-238260\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "6a35fa40973dea66ed2c478d",
+        "title": "Ndraawz Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Ndraawz-Hub-238250",
+        "verified": false,
+        "key": false,
+        "views": 5649,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1781922368912.jpg",
+        "lastBump": "2026-06-20T02:26:08.911Z",
+        "likeCount": 0,
+        "dislikeCount": 1,
+        "createdAt": "2026-06-20T02:26:08.967Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Ndraawz-Hub-238250\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69cab2bb5bec1cb1cd4e0d4f",
+        "title": "CHITO HUB",
+        "game": {
+            "_id": "696a9572f3dbd103e3a38a5c",
+            "gameId": 77747658251236,
+            "name": "[BROLY!]  Sailor Piece",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-43bdcbaa0caa50f900ca8aae2babe559/480/270/Image/Png/noFilter"
+        },
+        "slug": "2x-Luck-Sailor-Piece-killaura-autoquest-teleportation-auto-upgrade-and-more-166267",
+        "verified": false,
+        "key": true,
+        "views": 11742,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/77747658251236-1774891707686.png",
+        "lastBump": "2026-04-23T20:17:11.439Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-30T17:28:27.717Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/2x-Luck-Sailor-Piece-killaura-autoquest-teleportation-auto-upgrade-and-more-166267\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69e37acaa7365c2bb6841eff",
+        "title": "Unlikely Hub",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Unlikely-Hub-202370",
+        "verified": false,
+        "key": false,
+        "views": 13343,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1776515786271.png",
+        "lastBump": "2026-04-18T12:36:26.367Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-04-18T12:36:26.385Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Unlikely-Hub-202370\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "6959a7d30bf17879dddf8656",
+        "title": "ZYN HUB SCRIPT MULTIPLE GAMES",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-ZYN-HUB-SCRIPT-MULTIPLE-GAMES-81488",
+        "verified": false,
+        "key": true,
+        "views": 24668,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1767483347292.jpg",
+        "lastBump": "2026-04-18T07:41:55.234Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-03T23:35:47.342Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-ZYN-HUB-SCRIPT-MULTIPLE-GAMES-81488\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69da90187cb39a7286e502d7",
+        "title": "MNAHub CMD The best Commands hub for Xeno",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-MNAHub-CMD-The-best-Commands-hub-for-Xeno-242412",
+        "verified": false,
+        "key": false,
+        "views": 11397,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1775931416482.png",
+        "lastBump": "2026-04-11T18:16:56.513Z",
+        "likeCount": 1,
+        "dislikeCount": 2,
+        "createdAt": "2026-04-11T18:16:56.515Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-MNAHub-CMD-The-best-Commands-hub-for-Xeno-242412\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69cf06bee52e8dc73fe964d1",
+        "title": "VenoxHub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77dca",
+            "gameId": 14259168147,
+            "name": "[2X]🏀Basketball Legends🏀",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-9050df3f8d131d30af817bb6427a65a6/480/270/Image/Png/noFilter"
+        },
+        "slug": "SPRING-Basketball-Legends-VenoxHub-177702",
+        "verified": false,
+        "key": true,
+        "views": 9867,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-9050df3f8d131d30af817bb6427a65a6/480/270/Image/Png/noFilter",
+        "lastBump": "2026-04-10T17:37:26.492Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-04-03T00:15:58.116Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/SPRING-Basketball-Legends-VenoxHub-177702\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69d1ce3ed7d8a46f3ae36507",
+        "title": "Void Fishing Auto Fish",
+        "game": {
+            "_id": "683209e1440874f0e11a237c",
+            "gameId": 18172550962,
+            "name": "Pixel Blade [🔥]",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-1ebadca39ae88530371c0561f8297f20/480/270/Image/Png/noFilter"
+        },
+        "slug": "Pixel-Blade-Void-Fishing-Auto-Fish-Open-Source-186282",
+        "verified": false,
+        "key": true,
+        "views": 7561,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-115979c74083fb7b1bda1f12f836e0de/480/270/Image/Png/noFilter",
+        "lastBump": "2026-04-05T02:51:42.181Z",
+        "likeCount": 0,
+        "dislikeCount": 1,
+        "createdAt": "2026-04-05T02:51:42.184Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Pixel-Blade-Void-Fishing-Auto-Fish-Open-Source-186282\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69c776be59fd69d728a2b4bd",
+        "title": "Volt Find Fruit",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Volt-Find-Fruit-153643",
+        "verified": false,
+        "key": false,
+        "views": 11016,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1774679742885.jpg",
+        "lastBump": "2026-03-28T06:35:42.897Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-28T06:35:42.900Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Volt-Find-Fruit-153643\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69c534c922aa30fb14d2ce63",
+        "title": "JemiAim Universal pc Aimbot",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d3e",
+            "gameId": 155615604,
+            "name": "Prison Life",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-4e541a0e7376f0235f0eeb0192e96ddb/480/270/Image/Png/noFilter"
+        },
+        "slug": "Prison-Life-JemiAim-Simple-Universal-Aimbot-149219",
+        "verified": false,
+        "key": false,
+        "views": 7700,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/155615604-1774531785782.png",
+        "lastBump": "2026-03-26T13:29:45.805Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-26T13:29:45.806Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Prison-Life-JemiAim-Simple-Universal-Aimbot-149219\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69c1246d91975052339bb769",
+        "title": "Ketamine",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Ketamine-145914",
+        "verified": false,
+        "key": false,
+        "views": 6740,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1774265453555.png",
+        "lastBump": "2026-03-23T20:55:23.367Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-23T11:30:53.571Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Ketamine-145914\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69b84ed01526fb78b4ec6ee0",
+        "title": "Lots of money",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Lots-of-money-136048",
+        "verified": false,
+        "key": true,
+        "views": 5859,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1773686480679.png",
+        "lastBump": "2026-03-23T19:06:15.038Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-16T18:41:20.701Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Lots-of-money-136048\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69c0c32768b3a5e4cd6f144a",
+        "title": "CubiX Hub",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-CubiX-Hub-143834",
+        "verified": false,
+        "key": false,
+        "views": 5891,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1774240551322.png",
+        "lastBump": "2026-03-23T04:35:51.334Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-23T04:35:51.336Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-CubiX-Hub-143834\"))()",
+        "matched": []
+    },
+    {
+        "_id": "699dce46dd3f43e336e1fd49",
+        "title": "Forge Hub | Stock Tracker, Auto Buy, Auto Plant + More",
+        "game": {
+            "_id": "699b3add24f07a942ab85381",
+            "gameId": 130594398886540,
+            "name": "[MYTHICAL] Garden Horizons 🌱",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-81848a6bc0f49b4f8c7c2fd1ea6cad91/480/270/Image/Png/noFilter"
+        },
+        "slug": "Garden-Horizons-Forge-Hub-121559",
+        "verified": true,
+        "key": true,
+        "views": 11571,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-3fb4de1a639afae0086075bfd15f9c17/480/270/Image/Png/noFilter",
+        "lastBump": "2026-02-24T16:13:58.859Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-24T16:13:58.862Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Garden-Horizons-Forge-Hub-121559\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69be80aa900e25688934ec43",
+        "title": "SL HUB",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-SL-HUB-137006",
+        "verified": false,
+        "key": true,
+        "views": 6947,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1774092458358.png",
+        "lastBump": "2026-03-21T11:27:38.391Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-21T11:27:38.395Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-SL-HUB-137006\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69bda61b167f01344151dddb",
+        "title": "SailorHub",
+        "game": {
+            "_id": "696a9572f3dbd103e3a38a5c",
+            "gameId": 77747658251236,
+            "name": "[BROLY!]  Sailor Piece",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-43bdcbaa0caa50f900ca8aae2babe559/480/270/Image/Png/noFilter"
+        },
+        "slug": "2x-Luck-Sailor-Piece-SailorHub-136289",
+        "verified": false,
+        "key": true,
+        "views": 4103,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-650531a10328e7318905bfc95af50860/480/270/Image/Png/noFilter",
+        "lastBump": "2026-03-20T19:55:07.477Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-20T19:55:07.482Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/2x-Luck-Sailor-Piece-SailorHub-136289\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69b15ce335f7c0d56d46d56c",
+        "title": "Ather Hub Blox Fruits [Cracked]",
+        "game": {
+            "_id": "692cce798e77b801d62ad020",
+            "gameId": 123974602339071,
+            "name": "[UP] Just a baseplate.",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-d1ca2507a475745843b3384d0770e5a1/480/270/Image/Png/noFilter"
+        },
+        "slug": "UP-Just-a-baseplate.-Ather-Hub-Blox-Fruits-Reworked-Keyless-136511",
+        "verified": false,
+        "key": false,
+        "views": 5673,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-20f1913cc86f121dbbe4c246932e0e34/480/270/Image/Png/noFilter",
+        "lastBump": "2026-03-11T12:15:31.270Z",
+        "likeCount": 1,
+        "dislikeCount": 1,
+        "createdAt": "2026-03-11T12:15:31.272Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/UP-Just-a-baseplate.-Ather-Hub-Blox-Fruits-Reworked-Keyless-136511\"))()",
+        "matched": [
+            "title",
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "69b0a925942b0cf7aa51e3a9",
+        "title": "XOVA BEST SCRIPT FOR XENO DELTA FARM STACKING NOLAG EZ",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-XOVA-BEST-SCRIPT-FOR-XENO-DELTA-FARM-STACKING-NOLAG-EZ-136153",
+        "verified": false,
+        "key": false,
+        "views": 28676,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": true,
+        "image": "/images/script/0-1773185317262.png",
+        "lastBump": "2026-03-10T23:28:37.298Z",
+        "likeCount": 5,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-10T23:28:37.300Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-XOVA-BEST-SCRIPT-FOR-XENO-DELTA-FARM-STACKING-NOLAG-EZ-136153\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69ada35d43eb3299c55af76f",
+        "title": "Tiger Hub V4",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Tiger-Hub-V4-133278",
+        "verified": false,
+        "key": false,
+        "views": 8551,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1772987229962.webp",
+        "lastBump": "2026-03-08T16:27:09.984Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-08T16:27:09.985Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Tiger-Hub-V4-133278\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69a874861526fb78b4c0c82c",
+        "title": "Void fruit farmer",
+        "game": {
+            "_id": "69a874861526fb78b4c0c829",
+            "gameId": 8073420993,
+            "name": "Blox Fruits Mod",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-db921f4168517a43b7ba8aeb0fe1a6b4/480/270/Image/Png/noFilter"
+        },
+        "slug": "Blox-Fruits-Mod-Void-fruit-farmer-128649",
+        "verified": false,
+        "key": false,
+        "views": 26939,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/8073420993-1772647558105.jpg",
+        "lastBump": "2026-03-04T18:05:58.118Z",
+        "likeCount": 2,
+        "dislikeCount": 2,
+        "createdAt": "2026-03-04T18:05:58.120Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Blox-Fruits-Mod-Void-fruit-farmer-128649\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "69a510a21e78f318d3522cd4",
+        "title": "Volt hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Volt-hub-126803",
+        "verified": false,
+        "key": false,
+        "views": 5725,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1772425378341.png",
+        "lastBump": "2026-03-02T04:22:58.356Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-03-02T04:22:58.360Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Volt-hub-126803\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "69a1626e91f12cbed2ece35a",
+        "title": "Jump height changer Universal",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Jump-height-changer-Universal-123174",
+        "verified": false,
+        "key": false,
+        "views": 3089,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1772184174153.jpg",
+        "lastBump": "2026-02-27T09:22:54.165Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-27T09:22:54.166Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Jump-height-changer-Universal-123174\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6974befc6fe269b3ef1dd62d",
+        "title": "ROBLOX MOD MENU SCRIPT",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-ROBLOX-MOD-MENU-SCRIPT-91147",
+        "verified": false,
+        "key": false,
+        "views": 18134,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769258748028.jpg",
+        "lastBump": "2026-02-08T13:59:25.258Z",
+        "likeCount": 10,
+        "dislikeCount": 4,
+        "createdAt": "2026-01-24T12:45:48.095Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-ROBLOX-MOD-MENU-SCRIPT-91147\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69886b50fe1749e0188de3a8",
+        "title": "FIXED Best Script Monolith",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77e8b",
+            "gameId": 79393329652220,
+            "name": "[🧤] Defusal",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-427d1557c15e70151835c7142107c9ef/480/270/Image/Png/noFilter"
+        },
+        "slug": "UPD-Defusal-BEST-Script-Monolith-106168",
+        "verified": false,
+        "key": true,
+        "views": 6723,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-7aff6214619e2999099690abddb740a1/480/270/Image/Png/noFilter",
+        "lastBump": "2026-02-08T10:54:08.893Z",
+        "likeCount": 3,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-08T10:54:08.894Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/UPD-Defusal-BEST-Script-Monolith-106168\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69871c2f711cf3c912842474",
+        "title": "FIXED Best Flag Wars Script Monolith",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c784c1",
+            "gameId": 3214114884,
+            "name": "[💰2x] Flag Wars! ",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-712f57cc63ee22d656042b4d7bb3ccdb/480/270/Image/Png/noFilter"
+        },
+        "slug": "Flag-Wars!-BEST-Flag-Wars-Script-Monolith-105907",
+        "verified": false,
+        "key": true,
+        "views": 3552,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-712f57cc63ee22d656042b4d7bb3ccdb/480/270/Image/Png/noFilter",
+        "lastBump": "2026-02-07T11:04:15.034Z",
+        "likeCount": 3,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-07T11:04:15.035Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Flag-Wars!-BEST-Flag-Wars-Script-Monolith-105907\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69861ae99a31e53942ab7b42",
+        "title": "Best free clanning script third person aimbot",
+        "game": {
+            "_id": "67f14b4697dff9c9e7005e6d",
+            "gameId": 5169051062,
+            "name": "Futuretops: Rework",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-6f5a8f603e2b8f3cf8fe01aa2218fde8/480/270/Image/Png/noFilter"
+        },
+        "slug": "Futuretops:-Rework-Best-clanning-script-third-person-aimbot-103670",
+        "verified": false,
+        "key": false,
+        "views": 5513,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-fa7680f17e2ed6994f0642f4ab3fefbd/480/270/Image/Png/noFilter",
+        "lastBump": "2026-02-06T16:46:33.236Z",
+        "likeCount": 6,
+        "dislikeCount": 1,
+        "createdAt": "2026-02-06T16:46:33.237Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Futuretops:-Rework-Best-clanning-script-third-person-aimbot-103670\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69859f55711cf3c9126beb7c",
+        "title": "Bear hub Premium",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Bear-hub-Premium-103419",
+        "verified": false,
+        "key": true,
+        "views": 8785,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1770364757159.jpg",
+        "lastBump": "2026-02-06T07:59:17.183Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-06T07:59:17.185Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Bear-hub-Premium-103419\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6983746612004551b689fe58",
+        "title": "MrXT Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-MrXT-Hub-102075",
+        "verified": false,
+        "key": false,
+        "views": 3600,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1770222694215.png",
+        "lastBump": "2026-02-04T16:31:34.241Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-02-04T16:31:34.243Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-MrXT-Hub-102075\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "697dcde31c43da9b17eb6bb6",
+        "title": "JW Hub Auto Farm GODMODE Kill Aura Teleport Bring All Troll",
+        "game": {
+            "_id": "68437b38a7d0bed5d5235e5c",
+            "gameId": 79546208627805,
+            "name": "[🪶] 99 Nights in the Forest 🔦",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-c5215eabc21f46723f0084f99bb7622c/480/270/Image/Png/noFilter"
+        },
+        "slug": "99-Nights-in-the-Forest-JW-Hub-Auto-Farm-GODMODE-Kill-Aura-Teleport-Bring-All-Troll-96434",
+        "verified": false,
+        "key": false,
+        "views": 12683,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-65eebaac747ed81ff9dfdc85643a1e12/480/270/Image/Png/noFilter",
+        "lastBump": "2026-01-31T09:39:47.093Z",
+        "likeCount": 5,
+        "dislikeCount": 2,
+        "createdAt": "2026-01-31T09:39:47.095Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/99-Nights-in-the-Forest-JW-Hub-Auto-Farm-GODMODE-Kill-Aura-Teleport-Bring-All-Troll-96434\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "697cc53328b1bd57ab7d5808",
+        "title": "Arceney Recode",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Arceney-Recode-95823",
+        "verified": false,
+        "key": true,
+        "views": 5805,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769784627907.png",
+        "lastBump": "2026-01-30T14:50:27.943Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-30T14:50:27.944Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Arceney-Recode-95823\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "697b75bda578c8e3d6578853",
+        "title": "KRscripthub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-KRscripthub-95063",
+        "verified": false,
+        "key": false,
+        "views": 2443,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769698749355.png",
+        "lastBump": "2026-01-29T14:59:09.365Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-29T14:59:09.366Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-KRscripthub-95063\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "697a3477ed2fb76bbcfd98a8",
+        "title": "Xcloud hub beta",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Xcloud-hub-beta-94390",
+        "verified": false,
+        "key": false,
+        "views": 2492,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769616503424.png",
+        "lastBump": "2026-01-28T16:12:21.399Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-28T16:08:23.441Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Xcloud-hub-beta-94390\"))()",
+        "matched": []
+    },
+    {
+        "_id": "697989a728b1bd57ab48db7c",
+        "title": "Rey Hub | Universal Script, Hide Delta Line, YT Music Player",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Universal-Rey-Hub-94082",
+        "verified": false,
+        "key": true,
+        "views": 6066,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769572775145.png",
+        "lastBump": "2026-01-28T03:59:35.159Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-28T03:59:35.160Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Universal-Rey-Hub-94082\"))()",
+        "matched": []
+    },
+    {
+        "_id": "69765775371e4249b54f64a0",
+        "title": "Six Seven hop",
+        "game": {
+            "_id": "69765775371e4249b54f649d",
+            "gameId": 93268439681220,
+            "name": "BLOX FRUITS QUIZ!!!",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-8aaa9fc9b840ea019c175f1223198b4c/480/270/Image/Png/noFilter"
+        },
+        "slug": "BLOX-FRUITS-QUIZ!!!-Six-Seven-hop-92168",
+        "verified": false,
+        "key": true,
+        "views": 1819,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-9f96ee51e717cbceb89b34a10604b5d3/480/270/Image/Png/noFilter",
+        "lastBump": "2026-01-25T17:48:37.489Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-25T17:48:37.490Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/BLOX-FRUITS-QUIZ!!!-Six-Seven-hop-92168\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "6972ee5818bb57eef0b08d34",
+        "title": "BEST Open Source Universal Script With Alot Of Features",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-BEST-Open-Source-Universal-Script-With-Alot-Of-Features-89955",
+        "verified": false,
+        "key": false,
+        "views": 7145,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1769139800860.png",
+        "lastBump": "2026-01-23T15:28:16.384Z",
+        "likeCount": 4,
+        "dislikeCount": 1,
+        "createdAt": "2026-01-23T03:43:20.882Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-BEST-Open-Source-Universal-Script-With-Alot-Of-Features-89955\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "696916f2f76c99c445d85002",
+        "title": "killer hub v2",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-killer-hub-v2-86143",
+        "verified": false,
+        "key": false,
+        "views": 4329,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1768494834683.jpg",
+        "lastBump": "2026-01-15T16:33:54.694Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-15T16:33:54.695Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-killer-hub-v2-86143\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69671abdda5d2acf48c19efc",
+        "title": "FloppBlox",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-FloppBlox-85557",
+        "verified": false,
+        "key": false,
+        "views": 2111,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1768364733302.jpg",
+        "lastBump": "2026-01-14T04:25:33.321Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-14T04:25:33.322Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-FloppBlox-85557\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6965da5ca601210e73681ed8",
+        "title": "QUANGLOVUONG",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-QUANGLOVUONG-85150",
+        "verified": false,
+        "key": false,
+        "views": 2298,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1768282716960.jpg",
+        "lastBump": "2026-01-13T05:38:36.975Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-13T05:38:36.980Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-QUANGLOVUONG-85150\"))()",
+        "matched": []
+    },
+    {
+        "_id": "6965366c5e106ddd8eb9ca9e",
+        "title": "WINGS WORLD 3 AUTO FORGE AUTO QUEST INSTA MINE",
+        "game": {
+            "_id": "68fd91e8744f1d82104a50a7",
+            "gameId": 76558904092080,
+            "name": "The Forge [BETA]",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-14a0f3dd69487564a0e12c08ad23c133/480/270/Image/Png/noFilter"
+        },
+        "slug": "The-Forge-BETA-WINGS-WORLD-3-AUTO-FORGE-AUTO-QUEST-INSTA-MINE-85044",
+        "verified": false,
+        "key": false,
+        "views": 11108,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-3eacda24071591b5157449a853e8b24c/480/270/Image/Png/noFilter",
+        "lastBump": "2026-01-12T17:59:08.995Z",
+        "likeCount": 1,
+        "dislikeCount": 5,
+        "createdAt": "2026-01-12T17:59:08.997Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/The-Forge-BETA-WINGS-WORLD-3-AUTO-FORGE-AUTO-QUEST-INSTA-MINE-85044\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6963aa053593559f36fa097d",
+        "title": "Ronix Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Ronix-Hub-84311",
+        "verified": false,
+        "key": true,
+        "views": 2386,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1768139269339.png",
+        "lastBump": "2026-01-11T13:47:49.352Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-11T13:47:49.353Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Ronix-Hub-84311\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69624dd0f76c99c44565f94a",
+        "title": "Gusta Scripts Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Gusta-Scripts-Hub-83727",
+        "verified": false,
+        "key": true,
+        "views": 2156,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1768050128402.png",
+        "lastBump": "2026-01-10T13:19:50.340Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-10T13:02:08.416Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Gusta-Scripts-Hub-83727\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "692727fd24b404ea8aac764e",
+        "title": "Bee swarm",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Bee-swarm-70300",
+        "verified": false,
+        "key": true,
+        "views": 3011,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1764173821027.png",
+        "lastBump": "2026-01-08T22:19:03.625Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2025-11-26T16:17:01.040Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Bee-swarm-70300\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "695e55a58dddd1f8e46a5fe5",
+        "title": "Axon Hub",
+        "game": {
+            "_id": "68fd91e8744f1d82104a50a7",
+            "gameId": 76558904092080,
+            "name": "The Forge [BETA]",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-14a0f3dd69487564a0e12c08ad23c133/480/270/Image/Png/noFilter"
+        },
+        "slug": "The-Forge-XMAS-Axon-Hub-82794",
+        "verified": false,
+        "key": false,
+        "views": 3572,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/76558904092080-1767789989884.png",
+        "lastBump": "2026-01-07T12:46:29.901Z",
+        "likeCount": 1,
+        "dislikeCount": 1,
+        "createdAt": "2026-01-07T12:46:29.902Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/The-Forge-XMAS-Axon-Hub-82794\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "695e4bc4467e0f755eeb7629",
+        "title": "CarbonHub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-CarbonHub-82789",
+        "verified": false,
+        "key": true,
+        "views": 3665,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1767787460009.png",
+        "lastBump": "2026-01-07T12:04:20.020Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-07T12:04:20.022Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-CarbonHub-82789\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6955c005ef99c2e138611697",
+        "title": "SowerHub V2 45 Games Supported",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-SowerHub-V2-45-Games-Supported-80537",
+        "verified": false,
+        "key": false,
+        "views": 32448,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1767227397038.png",
+        "lastBump": "2026-01-01T00:29:57.059Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2026-01-01T00:29:57.061Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-SowerHub-V2-45-Games-Supported-80537\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "695420e0bc7daa606257e176",
+        "title": "Avestix 4 games supported",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Avestix-4-games-supported-80141",
+        "verified": false,
+        "key": true,
+        "views": 2000,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isHub": true,
+        "isPatched": false,
+        "image": "/images/script/0-1767121120016.jpg",
+        "lastBump": "2025-12-30T18:58:40.031Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2025-12-30T18:58:40.039Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Avestix-4-games-supported-80141\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69027bb9d55f7b34b054ec5b",
+        "title": "Anon Hub 75 Games OP",
+        "game": {
+            "_id": "68437b38a7d0bed5d5235e5c",
+            "gameId": 79546208627805,
+            "name": "[🪶] 99 Nights in the Forest 🔦",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-c5215eabc21f46723f0084f99bb7622c/480/270/Image/Png/noFilter"
+        },
+        "slug": "99-Nights-in-the-Forest-Anon-Hub-75-Games-OP-61706",
+        "verified": false,
+        "key": true,
+        "views": 220193,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/79546208627805-1761770425535.jpg",
+        "lastBump": "2025-12-30T03:56:43.706Z",
+        "likeCount": 3,
+        "dislikeCount": 4,
+        "createdAt": "2025-10-29T20:40:25.569Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/99-Nights-in-the-Forest-Anon-Hub-75-Games-OP-61706\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "67e57780b42a0fb0027e15bf",
+        "title": "Forge Hub (BE ST OP FAST AUTOFARMS, TELEPORTS + LOTS MORE!)",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d1b",
+            "gameId": 16732694052,
+            "name": "Fisch 🌌 [ASTRAL]",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-17ce753c4b1f087c5eda362c24457e25/480/270/Image/Png/noFilter"
+        },
+        "slug": "Fisch-Forge-Hub-33454",
+        "verified": true,
+        "key": true,
+        "views": 1671559,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "createdAt": "2025-03-27T16:06:24.341Z",
+        "dislikeCount": 9,
+        "likeCount": 53,
+        "image": "https://tr.rbxcdn.com/180DAY-b84394b412945de2d278f1fd179037bf/500/280/Image/Jpeg/noFilter",
+        "lastBump": "2025-11-01T17:37:22.307Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Fisch-Forge-Hub-33454\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "68ba2f1a4ebf7b471a4d1d14",
+        "title": "NPC API",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "RED-EVENT-Blox-Fruits-blox-fruits-npc-handling-code-51768",
+        "verified": true,
+        "key": false,
+        "views": 934283,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-e1ce51abae5188805c3fee78ec7f4d08/480/270/Image/Png/noFilter",
+        "lastBump": "2025-10-30T00:54:10.652Z",
+        "likeCount": 9,
+        "dislikeCount": 2,
+        "createdAt": "2025-09-05T00:30:18.011Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/RED-EVENT-Blox-Fruits-blox-fruits-npc-handling-code-51768\"))()",
+        "matched": [
+            "game"
+        ]
+    },
+    {
+        "_id": "682c487d529c9f3c378f0ab2",
+        "title": "[KEYLESS] Actual Redz Hub Script Updated",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d17",
+            "gameId": 2753915549,
+            "name": "⚔️ Blox Fruits",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-65f8caa6b19f89964141f27c1e3b7fa0/480/270/Image/Png/noFilter"
+        },
+        "slug": "GRAVITY-Blox-Fruits-Actual-Redz-Hub-Script-Updated-40394",
+        "verified": true,
+        "key": false,
+        "views": 2513545,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/2753915549-1774547601543.png",
+        "lastBump": "2025-10-22T14:11:27.884Z",
+        "likeCount": 88,
+        "dislikeCount": 16,
+        "createdAt": "2025-05-20T09:16:45.103Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/GRAVITY-Blox-Fruits-Actual-Redz-Hub-Script-Updated-40394\"))()",
+        "matched": [
+            "tags",
+            "game"
+        ]
+    },
+    {
+        "_id": "6950719a9f586c34159f49a8",
+        "title": "SN HUBS BETA",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-SN-HUBS-BETA-79084",
+        "verified": false,
+        "key": true,
+        "views": 8390,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1766879642499.png",
+        "lastBump": "2025-12-27T23:54:02.542Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2025-12-27T23:54:02.543Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-SN-HUBS-BETA-79084\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "694ff3639f586c3415968574",
+        "title": "The Best Script Library All Script Tested And Verified TONS",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-The-Best-Script-Library-All-Script-Tested-And-Verified-TONS-78948",
+        "verified": false,
+        "key": true,
+        "views": 5766,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1766847331362.png",
+        "lastBump": "2025-12-27T14:55:31.375Z",
+        "likeCount": 7,
+        "dislikeCount": 0,
+        "createdAt": "2025-12-27T14:55:31.376Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-The-Best-Script-Library-All-Script-Tested-And-Verified-TONS-78948\"))()",
+        "matched": []
+    },
+    {
+        "_id": "694fbb2b31e76adf31c1d6e8",
+        "title": "All Script Game Roblox",
+        "game": {
+            "_id": "6959526c0597a5542a8de666",
+            "gameId": -1,
+            "name": "Script hub",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-All-Script-Game-Roblox-78832",
+        "verified": false,
+        "key": false,
+        "views": 8310,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1766832939279.png",
+        "lastBump": "2025-12-27T10:55:39.291Z",
+        "likeCount": 2,
+        "dislikeCount": 1,
+        "createdAt": "2025-12-27T10:55:39.292Z",
+        "isHub": true,
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-All-Script-Game-Roblox-78832\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "694edcf94c1dd777823828ef",
+        "title": "OP AUTOFARM TROLLING SCRIPT",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d98",
+            "gameId": 4580204640,
+            "name": "🔪Survive the Killer!",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-4f30b695e340b41799ff15643fff9795/480/270/Image/Png/noFilter"
+        },
+        "slug": "Code:-GIFT-Survive-the-Killer!-OP-AUTOFARM-TROLLING-SCRIPT-78600",
+        "verified": false,
+        "key": true,
+        "views": 6057,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-eb3a7318cd4fb067f886cc4d43d5d8d9/480/270/Image/Png/noFilter",
+        "lastBump": "2025-12-26T21:03:11.438Z",
+        "likeCount": 2,
+        "dislikeCount": 0,
+        "createdAt": "2025-12-26T19:07:37.100Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Code:-GIFT-Survive-the-Killer!-OP-AUTOFARM-TROLLING-SCRIPT-78600\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "694aca2dcccf728a172f7de8",
+        "title": "CoronaX update inf money auto win by anom4ly v2",
+        "game": {
+            "_id": "69220d166bcd06e8f7faf088",
+            "gameId": 95457676979352,
+            "name": "SMASH a Tower",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-619fde447dafc406dcc07c6846ccc6de/480/270/Image/Png/noFilter"
+        },
+        "slug": "SMASH-a-Tower-CoronaX-update-inf-money-auto-win-by-anom4ly-v2-77692",
+        "verified": false,
+        "key": false,
+        "views": 1997,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/95457676979352-1766509101355.png",
+        "lastBump": "2025-12-23T16:58:21.368Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2025-12-23T16:58:21.369Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/SMASH-a-Tower-CoronaX-update-inf-money-auto-win-by-anom4ly-v2-77692\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "6948b72d4c1dd77782d7a3c8",
+        "title": "SowerHub V2 Christmas Edition 37 Games Supported",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-SowerHub-V2-Rewrite-14-Games-Support-77076",
+        "verified": false,
+        "key": true,
+        "views": 21743,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1766544157220.png",
+        "lastBump": "2025-12-22T03:12:45.086Z",
+        "likeCount": 0,
+        "dislikeCount": 1,
+        "createdAt": "2025-12-22T03:12:45.087Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-SowerHub-V2-Rewrite-14-Games-Support-77076\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6944ab9763d9054d72d68226",
+        "title": "SN Hubs support Xeno",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-SN-Hubs-support-Xeno-76049",
+        "verified": false,
+        "key": true,
+        "views": 8088,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1766108055910.png",
+        "lastBump": "2025-12-19T01:34:15.943Z",
+        "likeCount": 1,
+        "dislikeCount": 1,
+        "createdAt": "2025-12-19T01:34:15.945Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-SN-Hubs-support-Xeno-76049\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6942f8ec0e8302e620da149d",
+        "title": "JW Hub Auto Farm GODMODE Kill Aura Teleport Bring All etc",
+        "game": {
+            "_id": "68437b38a7d0bed5d5235e5c",
+            "gameId": 79546208627805,
+            "name": "[🪶] 99 Nights in the Forest 🔦",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-c5215eabc21f46723f0084f99bb7622c/480/270/Image/Png/noFilter"
+        },
+        "slug": "99-Nights-in-the-Forest-JW-Hub-Auto-Farm-GODMODE-Kill-Aura-Teleport-Bring-All-etc-75756",
+        "verified": false,
+        "key": false,
+        "views": 10959,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-643b9b9285f3bd9b63cf392db12a4d87/480/270/Image/Png/noFilter",
+        "lastBump": "2025-12-17T18:39:40.511Z",
+        "likeCount": 4,
+        "dislikeCount": 2,
+        "createdAt": "2025-12-17T18:39:40.513Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/99-Nights-in-the-Forest-JW-Hub-Auto-Farm-GODMODE-Kill-Aura-Teleport-Bring-All-etc-75756\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "694057fdf002b181ca292a02",
+        "title": "JW Hub Auto Farm Auto Forge Auto Sell Teleport Antiban etc",
+        "game": {
+            "_id": "68fd91e8744f1d82104a50a7",
+            "gameId": 76558904092080,
+            "name": "The Forge [BETA]",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-14a0f3dd69487564a0e12c08ad23c133/480/270/Image/Png/noFilter"
+        },
+        "slug": "The-Forge-BETA-JW-Hub-Auto-Farm-Auto-Forge-Auto-Sell-Teleport-Antiban-etc-75303",
+        "verified": false,
+        "key": false,
+        "views": 11971,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-3eacda24071591b5157449a853e8b24c/480/270/Image/Png/noFilter",
+        "lastBump": "2025-12-15T18:48:29.392Z",
+        "likeCount": 1,
+        "dislikeCount": 1,
+        "createdAt": "2025-12-15T18:48:29.393Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/The-Forge-BETA-JW-Hub-Auto-Farm-Auto-Forge-Auto-Sell-Teleport-Antiban-etc-75303\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "693606a662824064c096be3d",
+        "title": "YBA",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-YBA-73357",
+        "verified": false,
+        "key": true,
+        "views": 3881,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1765148326439.png",
+        "lastBump": "2025-12-07T22:58:46.451Z",
+        "likeCount": 0,
+        "dislikeCount": 1,
+        "createdAt": "2025-12-07T22:58:46.453Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-YBA-73357\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69296ad9cfddb54ae745beb7",
+        "title": "CoronaX Loadstring Builder by anom4ly",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-CoronaX-Loadstring-Builder-by-anom4ly-70563",
+        "verified": false,
+        "key": false,
+        "views": 1447,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1764322009123.png",
+        "lastBump": "2025-11-28T09:26:49.136Z",
+        "likeCount": 2,
+        "dislikeCount": 1,
+        "createdAt": "2025-11-28T09:26:49.138Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-CoronaX-Loadstring-Builder-by-anom4ly-70563\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "69231c325f27c264a60f8b37",
+        "title": "Anime Vanguards",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Anime-Vanguards-69242",
+        "verified": false,
+        "key": true,
+        "views": 2194,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1763908658762.png",
+        "lastBump": "2025-11-23T14:37:38.772Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2025-11-23T14:37:38.774Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Anime-Vanguards-69242\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "69231bbb264ed7f06b3be5bb",
+        "title": "Atlantis Hub",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Atlantis-Hub-69239",
+        "verified": false,
+        "key": true,
+        "views": 2001,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1763908539461.png",
+        "lastBump": "2025-11-23T14:35:39.472Z",
+        "likeCount": 0,
+        "dislikeCount": 0,
+        "createdAt": "2025-11-23T14:35:39.474Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Atlantis-Hub-69239\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "6917347c315fed520c3dfd3b",
+        "title": "Arceney Scripts",
+        "game": {
+            "_id": "67e5e1ffb360710ec3c77d0f",
+            "gameId": 0,
+            "name": "Universal Script 📌",
+            "imageUrl": "/images/no-script.webp"
+        },
+        "slug": "Universal-Script-Arceney-Scripts-65900",
+        "verified": false,
+        "key": true,
+        "views": 13548,
+        "scriptType": "free",
+        "isUniversal": true,
+        "isPatched": false,
+        "image": "/images/script/0-1763128444186.png",
+        "lastBump": "2025-11-14T13:54:04.215Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2025-11-14T13:54:04.220Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-Arceney-Scripts-65900\"))()",
+        "matched": [
+            "features",
+            "tags"
+        ]
+    },
+    {
+        "_id": "68fc2f4113628a7ad4876094",
+        "title": "Epik Hub | BEST 99 NIGHTS SCRIPT",
+        "game": {
+            "_id": "68437b38a7d0bed5d5235e5c",
+            "gameId": 79546208627805,
+            "name": "[🪶] 99 Nights in the Forest 🔦",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-c5215eabc21f46723f0084f99bb7622c/480/270/Image/Png/noFilter"
+        },
+        "slug": "99-Nights-in-the-Forest-Epik-Hub-Updated-60573",
+        "verified": false,
+        "key": true,
+        "views": 10717,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "/images/script/79546208627805-1761357931644.png",
+        "lastBump": "2025-10-25T02:00:40.799Z",
+        "likeCount": 1,
+        "dislikeCount": 0,
+        "createdAt": "2025-10-25T02:00:33.990Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/99-Nights-in-the-Forest-Epik-Hub-Updated-60573\"))()",
+        "matched": [
+            "features"
+        ]
+    },
+    {
+        "_id": "68fc0be6dc97b5c4c07f22a3",
+        "title": "OP Auto Play Configurable",
+        "game": {
+            "_id": "67ec850888f10618f4e6bc84",
+            "gameId": 4761134106,
+            "name": "Roblox Flappy Bird",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-079895437909a1ebb525401229cbee6a/480/270/Image/Png/noFilter"
+        },
+        "slug": "Roblox-Flappy-Bird-OP-Auto-Play-Configurable-60550",
+        "verified": false,
+        "key": false,
+        "views": 17105,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-b208bbf58fe7e5ae9053b6ca7939dc42/480/270/Image/Png/noFilter",
+        "lastBump": "2025-10-24T23:29:42.158Z",
+        "likeCount": 3,
+        "dislikeCount": 3,
+        "createdAt": "2025-10-24T23:29:42.159Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Roblox-Flappy-Bird-OP-Auto-Play-Configurable-60550\"))()",
+        "matched": [
+            "tags"
+        ]
+    },
+    {
+        "_id": "68f6cb8a915054d22777d1c5",
+        "title": "AutoFarmCut",
+        "game": {
+            "_id": "68d1db69b543144b96872972",
+            "gameId": 135880624242201,
+            "name": "Cut Trees",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-48e77eaef1d8e9d84f1868c4777f2518/480/270/Image/Png/noFilter"
+        },
+        "slug": "Cut-Trees-AutoFarmCut-59741",
+        "verified": false,
+        "key": false,
+        "views": 10482,
+        "scriptType": "free",
+        "isUniversal": false,
+        "isPatched": false,
+        "image": "https://tr.rbxcdn.com/180DAY-f253ae9c25564a4f9bb7e4ccb0dd3d32/480/270/Image/Png/noFilter",
+        "lastBump": "2025-10-20T23:53:46.899Z",
+        "likeCount": 3,
+        "dislikeCount": 0,
+        "createdAt": "2025-10-20T23:53:46.900Z",
+        "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Cut-Trees-AutoFarmCut-59741\"))()",
+        "matched": [
+            "features"
+        ]
+    }
+]
