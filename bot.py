@@ -1,5 +1,5 @@
 import asyncio
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 import json
 import os
 import re
@@ -10,7 +10,7 @@ from discord import app_commands
 from discord.ext import commands
 from flask import Flask
 
-# --- سيرفر وهمي لإبقاء البوت مستيقظاً 24/7 على Render ---
+# --- سيرفر إبقاء البوت مستيقظاً على Render ---
 app = Flask("")
 
 
@@ -31,12 +31,60 @@ def keep_alive():
 
 keep_alive()
 
-# --- إعدادات التوكن والـ Guild ---
 TOKEN = "MTU0Mjk2NzAxOTgyODI4NTU5MA.GNN1Ui.VN1hVzgraeHhNT5zjCoZepx9reV85ncPT-Cn5U"
 GUILD_ID = discord.Object(id=1540821164300046406)
-SPECIAL_ROLE_ID = 1543204347049943121  # ID الرتبة الخاصة
+SPECIAL_ROLE_ID = 1543204347049943121
 
 
+# ==================== نظام الأوتومود وتنظيف النصوص ====================
+def normalize_arabic_text(text: str) -> str:
+  if not text:
+    return ""
+  text = text.lower()
+  text = re.sub(r"[\u064b-\u0652\u0640]", "", text)
+  text = re.sub(r"[^\u0621-\u064A\s]", "", text)
+  text = re.sub(r"[إأآا]", "ا", text)
+  text = re.sub(r"ى", "ي", text)
+  text = re.sub(r"ة", "ه", text)
+  text = re.sub(r"(.)\1+", r"\1", text)
+  return text.strip()
+
+
+BAD_WORDS_SET = set()
+
+
+def load_bad_words_database():
+  global BAD_WORDS_SET
+  if os.path.exists("bad_words.json"):
+    try:
+      with open("bad_words.json", "r", encoding="utf-8") as f:
+        words_list = json.load(f)
+        for w in words_list:
+          cleaned = normalize_arabic_text(w)
+          if cleaned:
+            BAD_WORDS_SET.add(cleaned)
+      print(f"✅ تم تحميل {len(BAD_WORDS_SET)} كلمة ممنوعة في الذاكرة بنجاح!")
+    except Exception as e:
+      print(f"❌ خطأ في تحميل bad_words.json: {e}")
+
+
+load_bad_words_database()
+
+
+def is_profane(message_content: str) -> bool:
+  cleaned_text = normalize_arabic_text(message_content)
+  words = cleaned_text.split()
+  for word in words:
+    if word in BAD_WORDS_SET:
+      return True
+  no_space_text = cleaned_text.replace(" ", "")
+  for bad_word in BAD_WORDS_SET:
+    if len(bad_word) >= 3 and bad_word in no_space_text:
+      return True
+  return False
+
+
+# ==================== إعدادات البوت والسكربتات ====================
 class MyBot(commands.Bot):
 
   def __init__(self):
@@ -46,13 +94,9 @@ class MyBot(commands.Bot):
     super().__init__(command_prefix="!", intents=intents)
 
   async def setup_hook(self):
-    self.tree.clear_commands(guild=None)
-    await self.tree.sync(guild=None)
-
     self.tree.clear_commands(guild=GUILD_ID)
     self.tree.add_command(script_command, guild=GUILD_ID)
     await self.tree.sync(guild=GUILD_ID)
-    print("✅ تم تجهيز الأوامر وتحديثها بنجاح!")
 
 
 bot = MyBot()
@@ -98,7 +142,6 @@ class LocalScriptPaginatorView(discord.ui.View):
 
   def build_ui(self):
     self.clear_items()
-
     start_idx = self.current_page * self.items_per_page
     end_idx = min(start_idx + self.items_per_page, len(self.scripts))
     page_scripts = self.scripts[start_idx:end_idx]
@@ -203,11 +246,56 @@ def parse_duration_from_text(text):
   return timedelta(seconds=60), "60s"
 
 
+# ==================== استقبال الرسائل والأوامر ====================
+user_violations = {}
+
+
 @bot.event
 async def on_message(message: discord.Message):
   if message.author.bot or not message.guild:
     return
 
+  # 1. فحص الأوتومود والعقوبات المتصاعدة (لغير الأدمن)
+  if not message.author.guild_permissions.administrator:
+    if is_profane(message.content):
+      try:
+        await message.delete()
+
+        user_id = message.author.id
+        now = datetime.now(timezone.utc)
+
+        if user_id in user_violations:
+          last_time = user_violations[user_id]["last_violation"]
+          if (now - last_time).total_seconds() > 86400:
+            user_violations[user_id] = {"count": 1, "last_violation": now}
+          else:
+            user_violations[user_id]["count"] += 1
+            user_violations[user_id]["last_violation"] = now
+        else:
+          user_violations[user_id] = {"count": 1, "last_violation": now}
+
+        current_count = user_violations[user_id]["count"]
+        timeout_minutes = current_count * 5
+        next_timeout = (current_count + 1) * 5
+
+        await message.author.timeout(
+            timedelta(minutes=timeout_minutes),
+            reason=f"مخالفة الألفاظ رقم {current_count} خلال 24 ساعة",
+        )
+
+        warn_msg = await message.channel.send(
+            f"🚫 {message.author.mention} **تم حذف رسالتك ومعاقبتك بتايم أوت"
+            f" لمدة `{timeout_minutes}` دقائق (المخالفة رقم"
+            f" {current_count}).**\n⚠️ **المرة القادمة ستكون العقوبة"
+            f" `{next_timeout}` دقائق!**"
+        )
+        await asyncio.sleep(6)
+        await warn_msg.delete()
+        return
+      except Exception as e:
+        print(f"خطأ في تطبيق العقوبة: {e}")
+
+  # 2. الأوامر الإدارية السابقة
   content = message.content.strip()
   admin_commands = [
       "#قفل",
@@ -234,7 +322,6 @@ async def on_message(message: discord.Message):
       await message.reply("يرجال دز ههههههههههههههه")
       return
 
-  # --- أمر القفل ---
   if content in ["#قفل", "#غلق"]:
     await asyncio.gather(
         message.channel.set_permissions(
@@ -244,7 +331,6 @@ async def on_message(message: discord.Message):
     )
     return
 
-  # --- أمر الفتح ---
   if content == "#فتح":
     await asyncio.gather(
         message.channel.set_permissions(
@@ -254,7 +340,6 @@ async def on_message(message: discord.Message):
     )
     return
 
-  # --- أمر التنظيف ---
   if content in ["نضف", "نظف", "مسح"]:
     prompt_msg = await message.reply("🗑️ كم عدد الرسائل التي تريد حذفها؟")
 
@@ -281,7 +366,6 @@ async def on_message(message: discord.Message):
       await fail_msg.delete()
     return
 
-  # --- أمر "اص" ---
   if content.startswith("اص"):
     if not message.mentions:
       await message.reply("تم اعطاء العضو تايم")
@@ -297,7 +381,6 @@ async def on_message(message: discord.Message):
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
-  # --- أمر "تكلم" ---
   if content.startswith("تكلم") or content.startswith("تكلموا"):
     if not message.mentions:
       await message.reply("تم فك التايم عن العضو")
@@ -312,7 +395,6 @@ async def on_message(message: discord.Message):
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
-  # --- أمر "بنعالي" ---
   if content.startswith("بنعالي"):
     if not message.mentions:
       await message.reply("تم اعطاء العضو باند نهائي")
@@ -329,7 +411,6 @@ async def on_message(message: discord.Message):
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
-  # --- أمر "ارجاع" ---
   if content.startswith("ارجاع"):
     if not message.mentions:
       await message.reply("تم فك الباند عن العضو")
@@ -346,7 +427,6 @@ async def on_message(message: discord.Message):
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
-  # --- أمر "تفضل" ---
   if content.startswith("تفضل"):
     if not message.mentions:
       await message.reply("تم اعطاء الرتبة للعضو بنجاح")
@@ -365,7 +445,6 @@ async def on_message(message: discord.Message):
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
-  # --- أمر "شيل" ---
   if content == "شيل":
     role = message.guild.get_role(SPECIAL_ROLE_ID)
     if not role:
@@ -394,7 +473,7 @@ async def on_message(message: discord.Message):
 
 @bot.event
 async def on_ready():
-  print(f"🚀 تم تشغيل البوت بنجاح تحت اسم: {bot.user}")
+  print(f"🚀 البوت شغال باسم: {bot.user}")
 
 
 bot.run(TOKEN)
