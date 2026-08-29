@@ -96,6 +96,7 @@ class MyBot(commands.Bot):
   async def setup_hook(self):
     self.tree.clear_commands(guild=GUILD_ID)
     self.tree.add_command(script_command, guild=GUILD_ID)
+    self.tree.add_command(clear_group, guild=GUILD_ID)
     await self.tree.sync(guild=GUILD_ID)
 
 
@@ -218,6 +219,124 @@ async def script_command(interaction: discord.Interaction):
   await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
 
+# ==================== أوامر السلاش الجديدة (/clear) ====================
+clear_group = app_commands.Group(
+    name="clear", description="أوامر التنظيف للمسح وإزالة الرتب"
+)
+
+
+@clear_group.command(
+    name="message", description="حذف عدد معين من الرسائل من الروم"
+)
+@app_commands.describe(count="عدد الرسائل المراد حذفها")
+async def clear_message_cmd(interaction: discord.Interaction, count: int):
+  if not interaction.user.guild_permissions.administrator:
+    await interaction.response.send_message(
+        "يرجال دز ههههههههههههههه", ephemeral=True
+    )
+    return
+
+  if count <= 0:
+    await interaction.response.send_message(
+        "⚠️ يرجى إدخال رقم أعلى من 0", ephemeral=True
+    )
+    return
+
+  await interaction.response.defer(ephemeral=True)
+  deleted = await interaction.channel.purge(limit=count)
+
+  embed = discord.Embed(
+      description=f"🗑️ **تم مسح `{len(deleted)}` من الرسائل بنجاح.**",
+      color=discord.Color.blue(),
+  )
+  await interaction.followup.send(embed=embed)
+
+
+class RoleSelectMenu(discord.ui.Select):
+
+  def __init__(self, roles):
+    options = []
+    for role in roles[:25]:  # أقصى حد للقائمة 25 رتبة
+      options.append(discord.SelectOption(label=role.name, value=str(role.id)))
+    super().__init__(
+        placeholder="اختر الرتبة التي تريد إزالتها من الجميع...",
+        options=options,
+    )
+
+  async def callback(self, interaction: discord.Interaction):
+    if not interaction.user.guild_permissions.administrator:
+      await interaction.response.send_message(
+          "يرجال دز ههههههههههههههه", ephemeral=True
+      )
+      return
+
+    role_id = int(self.values[0])
+    role = interaction.guild.get_role(role_id)
+
+    if not role:
+      await interaction.response.send_message(
+          "❌ لم يتم العثور على الرتبة!", ephemeral=True
+      )
+      return
+
+    await interaction.response.defer(ephemeral=True)
+    count = 0
+    for member in role.members:
+      try:
+        await member.remove_roles(role)
+        count += 1
+      except Exception:
+        pass
+
+    embed = discord.Embed(
+        description=(
+            f"🧹 **تم إزالة رتبة {role.mention} بنجاح من `{count}` عضو.**"
+        ),
+        color=discord.Color.green(),
+    )
+    await interaction.followup.send(embed=embed)
+
+
+class RoleSelectView(discord.ui.View):
+
+  def __init__(self, roles):
+    super().__init__(timeout=60)
+    self.add_item(RoleSelectMenu(roles))
+
+
+@clear_group.command(
+    name="role", description="إظهار قائمة بالرتب لسحب الرتبة المختارة من الجميع"
+)
+async def clear_role_cmd(interaction: discord.Interaction):
+  if not interaction.user.guild_permissions.administrator:
+    await interaction.response.send_message(
+        "يرجال دز ههههههههههههههه", ephemeral=True
+    )
+    return
+
+  # تصفية الرتب الاستثنائية (رتبة الجميع ورتب البوتات)
+  valid_roles = [
+      r
+      for r in interaction.guild.roles
+      if r != interaction.guild.default_role and not r.is_bot_managed()
+  ]
+  if not valid_roles:
+    await interaction.response.send_message(
+        "❌ لا توجد رتب صالحة للإزالة!", ephemeral=True
+    )
+    return
+
+  view = RoleSelectView(valid_roles)
+  embed = discord.Embed(
+      title="🎭 اختيار الرتبة لإزالتها",
+      description="اختر الرتبة من القائمة أدناه لنزعها من جميع الأعضاء:",
+      color=discord.Color.gold(),
+  )
+  await interaction.response.send_message(
+      embed=embed, view=view, ephemeral=True
+  )
+
+
 def parse_duration_from_text(text):
   clean_text = re.sub(r"<@!?\d+>", "", text).strip()
   matches = re.findall(
@@ -282,9 +401,10 @@ async def on_message(message: discord.Message):
             reason=f"مخالفة الألفاظ رقم {current_count} خلال 24 ساعة",
         )
 
-        # الرد بالصيغة المعدلة المطلوبة
         warn_msg = await message.channel.send(
-            f"🚫 **تم معاقبة {message.author.mention} بإعطائه `{timeout_minutes}` دقائق تايم بسبب الشتم.**\n⚠️ **المرة القادمة ستكون العقوبة أكبر!**"
+            f"🚫 **تم معاقبة {message.author.mention} بإعطائه `{timeout_minutes}`"
+            " دقائق تايم بسبب الشتم.**\n⚠️ **المرة القادمة ستكون العقوبة"
+            " أكبر!**"
         )
         await asyncio.sleep(6)
         await warn_msg.delete()
@@ -292,7 +412,7 @@ async def on_message(message: discord.Message):
       except Exception as e:
         print(f"خطأ في تطبيق العقوبة: {e}")
 
-  # 2. الأوامر الإدارية السابقة
+  # 2. الأوامر الإدارية (مع أسلوب برو بوت للردود)
   content = message.content.strip()
   admin_commands = [
       "#قفل",
@@ -320,25 +440,27 @@ async def on_message(message: discord.Message):
       return
 
   if content in ["#قفل", "#غلق"]:
-    await asyncio.gather(
-        message.channel.set_permissions(
-            message.guild.default_role, send_messages=False
-        ),
-        message.reply("🔒 تم قفل الشات بنجاح"),
+    await message.channel.set_permissions(
+        message.guild.default_role, send_messages=False
     )
+    embed = discord.Embed(
+        description="🔒 **تم قفل الشات بنجاح.**", color=discord.Color.red()
+    )
+    await message.reply(embed=embed)
     return
 
   if content == "#فتح":
-    await asyncio.gather(
-        message.channel.set_permissions(
-            message.guild.default_role, send_messages=True
-        ),
-        message.reply("🔓 تم فتح الشات بنجاح"),
+    await message.channel.set_permissions(
+        message.guild.default_role, send_messages=True
     )
+    embed = discord.Embed(
+        description="🔓 **تم فتح الشات بنجاح.**", color=discord.Color.green()
+    )
+    await message.reply(embed=embed)
     return
 
   if content in ["نضف", "نظف", "مسح"]:
-    prompt_msg = await message.reply("🗑️ كم عدد الرسائل التي تريد حذفها؟")
+    prompt_msg = await message.reply("🗑️ **كم عدد الرسائل التي تريد حذفها؟**")
 
     def check(m):
       return (
@@ -351,82 +473,107 @@ async def on_message(message: discord.Message):
       response = await bot.wait_for("message", check=check, timeout=15.0)
       amount = int(response.content)
       await message.channel.purge(limit=amount + 3)
-      confirm_msg = await message.channel.send(
-          f"🧹 **تم حذف `{amount}` رسالة.**"
+      embed = discord.Embed(
+          description=f"🗑️ **تم مسح `{amount}` من الرسائل بنجاح.**",
+          color=discord.Color.blue(),
       )
+      confirm_msg = await message.channel.send(embed=embed)
       await asyncio.sleep(3)
       await confirm_msg.delete()
     except asyncio.TimeoutError:
       await prompt_msg.delete()
-      fail_msg = await message.reply("⏰ تم إلغاء الأمر (لم يتم تحديد العدد).")
-      await asyncio.sleep(3)
-      await fail_msg.delete()
     return
 
   if content.startswith("اص"):
     if not message.mentions:
-      await message.reply("تم اعطاء العضو تايم")
+      embed = discord.Embed(
+          description="⚠️ **يرجى تحديد العضو المطلوبة معاقبته!**",
+          color=discord.Color.gold(),
+      )
+      await message.reply(embed=embed)
       return
     target = message.mentions[0]
     duration, duration_str = parse_duration_from_text(content)
     try:
       await target.timeout(duration, reason=f"بواسطة {message.author}")
-      await message.reply(f"تم اعطاء {target.mention} تايم لمدة {duration_str}")
-    except discord.Forbidden:
-      await message.reply("❌ **فشل:** رتبة البوت أقل من العضو!")
+      embed = discord.Embed(
+          description=(
+              f"🤐 **تم إعطاء {target.mention} تايم أوت لمدة`{duration_str}`.**"
+          ),
+          color=discord.Color.orange(),
+      )
+      await message.reply(embed=embed)
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
   if content.startswith("تكلم") or content.startswith("تكلموا"):
     if not message.mentions:
-      await message.reply("تم فك التايم عن العضو")
+      embed = discord.Embed(
+          description="⚠️ **يرجى تحديد العضو لفك الميوت عنه!**",
+          color=discord.Color.gold(),
+      )
+      await message.reply(embed=embed)
       return
     target = message.mentions[0]
     try:
       await target.timeout(None, reason=f"فك الإسكات بواسطة {message.author}")
-      await message.reply(f"تم فك التايم عن {target.mention}")
-    except discord.Forbidden:
-      await message.reply("❌ **فشل:** رتبة البوت أقل من العضو!")
+      embed = discord.Embed(
+          description=f"🔊 **تم فك الميوت عن {target.mention}.**",
+          color=discord.Color.green(),
+      )
+      await message.reply(embed=embed)
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
   if content.startswith("بنعالي"):
     if not message.mentions:
-      await message.reply("تم اعطاء العضو باند نهائي")
+      embed = discord.Embed(
+          description="⚠️ **يرجى تحديد العضو لطرده بنهائي!**",
+          color=discord.Color.gold(),
+      )
+      await message.reply(embed=embed)
       return
     target = message.mentions[0]
     try:
       await target.ban(reason=f"بواسطة {message.author}")
-      await message.reply(f"تم اعطاء {target.mention} باند نهائي")
-    except discord.Forbidden:
-      await message.reply(
-          "❌ **فشل:** رتبة البوت أقل من العضو أو ينقصه صلاحية Ban!"
+      embed = discord.Embed(
+          description=f"🔨 **تم حظر {target.mention} بنجاح من السيرفر.**",
+          color=discord.Color.red(),
       )
+      await message.reply(embed=embed)
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
   if content.startswith("ارجاع"):
     if not message.mentions:
-      await message.reply("تم فك الباند عن العضو")
+      embed = discord.Embed(
+          description="⚠️ **يرجى منشن العضو لفك الحظر عنه!**",
+          color=discord.Color.gold(),
+      )
+      await message.reply(embed=embed)
       return
     target = message.mentions[0]
     try:
       await message.guild.unban(target, reason=f"فك الحظر بواسطة {message.author}")
-      await message.reply(f"تم فك الباند عن {target.mention}")
-    except discord.NotFound:
-      await message.reply("❌ **خطأ:** هذا العضو غير محظور أساساً!")
-    except discord.Forbidden:
-      await message.reply("❌ **فشل:** ينقص البوت صلاحية Ban Members!")
+      embed = discord.Embed(
+          description=f"🔓 **تم إلغاء حظر {target.mention} بنجاح.**",
+          color=discord.Color.green(),
+      )
+      await message.reply(embed=embed)
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
   if content.startswith("تفضل"):
     if not message.mentions:
-      await message.reply("تم اعطاء الرتبة للعضو بنجاح")
+      embed = discord.Embed(
+          description="⚠️ **يرجى منشن العضو لإعطائه الرتبة!**",
+          color=discord.Color.gold(),
+      )
+      await message.reply(embed=embed)
       return
     target = message.mentions[0]
     role = message.guild.get_role(SPECIAL_ROLE_ID)
@@ -435,9 +582,11 @@ async def on_message(message: discord.Message):
       return
     try:
       await target.add_roles(role)
-      await message.reply(f"تم اعطاء الرتبة لـ {target.mention} بنجاح ✅")
-    except discord.Forbidden:
-      await message.reply("❌ **فشل:** رتبة البوت أقل من الرتبة المراد إعطاؤها!")
+      embed = discord.Embed(
+          description=f"🎭 **تم إعطاء {target.mention} رتبة {role.mention} بنجاح.**",
+          color=discord.Color.blue(),
+      )
+      await message.reply(embed=embed)
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
@@ -448,19 +597,19 @@ async def on_message(message: discord.Message):
       await message.reply("❌ **خطأ:** لم يتم العثور على الرتبة بالـ ID المحدد!")
       return
 
-    status_msg = await message.reply("⚙️ جاري نزع الرتبة من الجميع...")
+    status_msg = await message.reply("⚙️ **جاري نزع الرتبة من الجميع...**")
     count = 0
     try:
       for member in role.members:
         await member.remove_roles(role)
         count += 1
-      await status_msg.edit(
-          content=f"🧹 تم نزع الرتبة بنجاح من جميع الأعضاء (العدد: {count})"
+      embed = discord.Embed(
+          description=(
+              f"🧹 **تم إزالة رتبة {role.mention} بنجاح من `{count}` عضو.**"
+          ),
+          color=discord.Color.green(),
       )
-    except discord.Forbidden:
-      await status_msg.edit(
-          content="❌ **فشل:** رتبة البوت أقل من الرتبة المراد إزالتها!"
-      )
+      await status_msg.edit(content=None, embed=embed)
     except Exception as e:
       await status_msg.edit(content=f"❌ **خطأ:** `{e}`")
     return
