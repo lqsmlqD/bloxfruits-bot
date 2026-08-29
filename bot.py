@@ -129,7 +129,8 @@ class ScriptButton(discord.ui.Button):
         ),
         color=discord.Color.green(),
     )
-    await interaction.response.send_message(embed=embed, ephemeral=True)
+    # إرسال كود السكربت علنياً في الشات للجميع
+    await interaction.response.send_message(embed=embed, ephemeral=False)
 
 
 class LocalScriptPaginatorView(discord.ui.View):
@@ -210,16 +211,16 @@ async def script_command(interaction: discord.Interaction):
   if not scripts:
     await interaction.response.send_message(
         "❌ لم يتم العثور على `scripts.json`. شغل `fetch_all.py` أولاً!",
-        ephemeral=True,
+        ephemeral=False,
     )
     return
 
   view = LocalScriptPaginatorView(scripts)
   embed = view.get_page_embed()
-  await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+  await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
 
 
-# ==================== أوامر السلاش الجديدة (/clear) ====================
+# ==================== أوامر السلاش (إظهار للجميع) ====================
 clear_group = app_commands.Group(
     name="clear", description="أوامر التنظيف للمسح وإزالة الرتب"
 )
@@ -232,17 +233,17 @@ clear_group = app_commands.Group(
 async def clear_message_cmd(interaction: discord.Interaction, count: int):
   if not interaction.user.guild_permissions.administrator:
     await interaction.response.send_message(
-        "يرجال دز ههههههههههههههه", ephemeral=True
+        "يرجال دز ههههههههههههههه", ephemeral=False
     )
     return
 
   if count <= 0:
     await interaction.response.send_message(
-        "⚠️ يرجى إدخال رقم أعلى من 0", ephemeral=True
+        "⚠️ يرجى إدخال رقم أعلى من 0", ephemeral=False
     )
     return
 
-  await interaction.response.defer(ephemeral=True)
+  await interaction.response.defer(ephemeral=False)
   deleted = await interaction.channel.purge(limit=count)
 
   embed = discord.Embed(
@@ -252,89 +253,66 @@ async def clear_message_cmd(interaction: discord.Interaction, count: int):
   await interaction.followup.send(embed=embed)
 
 
-class RoleSelectMenu(discord.ui.Select):
-
-  def __init__(self, roles):
-    options = []
-    for role in roles[:25]:  # أقصى حد للقائمة 25 رتبة
-      options.append(discord.SelectOption(label=role.name, value=str(role.id)))
-    super().__init__(
-        placeholder="اختر الرتبة التي تريد إزالتها من الجميع...",
-        options=options,
-    )
-
-  async def callback(self, interaction: discord.Interaction):
-    if not interaction.user.guild_permissions.administrator:
-      await interaction.response.send_message(
-          "يرجال دز ههههههههههههههه", ephemeral=True
-      )
-      return
-
-    role_id = int(self.values[0])
-    role = interaction.guild.get_role(role_id)
-
-    if not role:
-      await interaction.response.send_message(
-          "❌ لم يتم العثور على الرتبة!", ephemeral=True
-      )
-      return
-
-    await interaction.response.defer(ephemeral=True)
-    count = 0
-    for member in role.members:
-      try:
-        await member.remove_roles(role)
-        count += 1
-      except Exception:
-        pass
-
-    embed = discord.Embed(
-        description=(
-            f"🧹 **تم إزالة رتبة {role.mention} بنجاح من `{count}` عضو.**"
-        ),
-        color=discord.Color.green(),
-    )
-    await interaction.followup.send(embed=embed)
-
-
-class RoleSelectView(discord.ui.View):
-
-  def __init__(self, roles):
-    super().__init__(timeout=60)
-    self.add_item(RoleSelectMenu(roles))
-
-
-@clear_group.command(
-    name="role", description="إظهار قائمة بالرتب لسحب الرتبة المختارة من الجميع"
-)
-async def clear_role_cmd(interaction: discord.Interaction):
-  if not interaction.user.guild_permissions.administrator:
-    await interaction.response.send_message(
-        "يرجال دز ههههههههههههههه", ephemeral=True
-    )
-    return
-
-  # تصفية الرتب الاستثنائية (رتبة الجميع ورتب البوتات)
-  valid_roles = [
+async def role_autocomplete(
+    interaction: discord.Interaction, current: str
+) -> list[app_commands.Choice[str]]:
+  roles = [
       r
       for r in interaction.guild.roles
       if r != interaction.guild.default_role and not r.is_bot_managed()
   ]
-  if not valid_roles:
+  choices = []
+  for role in roles:
+    if current.lower() in role.name.lower():
+      choices.append(app_commands.Choice(name=role.name, value=str(role.id)))
+  return choices[:25]
+
+
+@clear_group.command(
+    name="role",
+    description="سحب رتبة محددة من جميع الأعضاء في السيرفر (يدعم كل الرتب)",
+)
+@app_commands.describe(role="اختر أو اكتب اسم الرتبة المراد إزالتها")
+@app_commands.autocomplete(role=role_autocomplete)
+async def clear_role_cmd(interaction: discord.Interaction, role: str):
+  if not interaction.user.guild_permissions.administrator:
     await interaction.response.send_message(
-        "❌ لا توجد رتب صالحة للإزالة!", ephemeral=True
+        "يرجال دز ههههههههههههههه", ephemeral=False
     )
     return
 
-  view = RoleSelectView(valid_roles)
+  try:
+    role_id = int(role)
+    target_role = interaction.guild.get_role(role_id)
+  except ValueError:
+    target_role = discord.utils.get(interaction.guild.roles, name=role)
+
+  if not target_role:
+    embed = discord.Embed(
+        description="❌ **لم يتم العثور على الرتبة المحددة!**",
+        color=discord.Color.red(),
+    )
+    await interaction.response.send_message(embed=embed, ephemeral=False)
+    return
+
+  await interaction.response.defer(ephemeral=False)
+
+  count = 0
+  for member in target_role.members:
+    try:
+      await member.remove_roles(target_role)
+      count += 1
+    except Exception:
+      pass
+
   embed = discord.Embed(
-      title="🎭 اختيار الرتبة لإزالتها",
-      description="اختر الرتبة من القائمة أدناه لنزعها من جميع الأعضاء:",
-      color=discord.Color.gold(),
+      description=(
+          f"🧹 **تم إزالة رتبة {target_role.mention} بنجاح من `{count}`"
+          " عضو.**"
+      ),
+      color=discord.Color.green(),
   )
-  await interaction.response.send_message(
-      embed=embed, view=view, ephemeral=True
-  )
+  await interaction.followup.send(embed=embed)
 
 
 def parse_duration_from_text(text):
@@ -498,7 +476,7 @@ async def on_message(message: discord.Message):
       await target.timeout(duration, reason=f"بواسطة {message.author}")
       embed = discord.Embed(
           description=(
-              f"🤐 **تم إعطاء {target.mention} تايم أوت لمدة`{duration_str}`.**"
+              f"🤐 **تم إعطاء {target.mention} تايم أوت لمدة `{duration_str}`.**"
           ),
           color=discord.Color.orange(),
       )
