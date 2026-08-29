@@ -129,7 +129,6 @@ class ScriptButton(discord.ui.Button):
         ),
         color=discord.Color.green(),
     )
-    # إرسال كود السكربت علنياً في الشات للجميع
     await interaction.response.send_message(embed=embed, ephemeral=False)
 
 
@@ -220,7 +219,84 @@ async def script_command(interaction: discord.Interaction):
   await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
 
 
-# ==================== أوامر السلاش (إظهار للجميع) ====================
+# ==================== نظام القوائم المنسدلة الشامل لكافة الرتب ====================
+class RoleSelect(discord.ui.Select):
+
+  def __init__(self, roles, placeholder):
+    options = [
+        discord.SelectOption(
+            label=role.name, value=str(role.id), description=f"ID: {role.id}"
+        )
+        for role in roles
+    ]
+    super().__init__(
+        placeholder=placeholder,
+        min_values=1,
+        max_values=1,
+        options=options,
+    )
+
+  async def callback(self, interaction: discord.Interaction):
+    if not interaction.user.guild_permissions.administrator:
+      await interaction.response.send_message(
+          "يرجال دز ههههههههههههههه", ephemeral=False
+      )
+      return
+
+    role_id = int(self.values[0])
+    target_role = interaction.guild.get_role(role_id)
+
+    if not target_role:
+      await interaction.response.send_message(
+          "❌ لم يتم العثور على الرتبة!", ephemeral=False
+      )
+      return
+
+    await interaction.response.defer(ephemeral=False)
+
+    count = 0
+    for member in target_role.members:
+      try:
+        await member.remove_roles(target_role)
+        count += 1
+      except Exception:
+        pass
+
+    embed = discord.Embed(
+        description=(
+            f"🧹 **تم إزالة رتبة {target_role.mention} بنجاح من `{count}`"
+            " عضو.**"
+        ),
+        color=discord.Color.green(),
+    )
+    await interaction.followup.send(embed=embed)
+
+
+class MultiRoleSelectView(discord.ui.View):
+
+  def __init__(self, guild: discord.Guild):
+    super().__init__(timeout=120)
+    # جلب جميع رتب السيرفر باستثناء @everyone
+    all_roles = [
+        r for r in guild.roles if r != guild.default_role and not r.managed
+    ]
+
+    # تقسيم الرتب إلى مجموعات (كل مجموعة 25 رتبة كحد أقصى)
+    chunk_size = 25
+    chunks = [
+        all_roles[i : i + chunk_size]
+        for i in range(0, len(all_roles), chunk_size)
+    ]
+
+    # إنشاء قائمة منسدلة لكل 25 رتبة
+    for index, role_chunk in enumerate(chunks):
+      start_num = (index * chunk_size) + 1
+      end_num = start_num + len(role_chunk) - 1
+      placeholder_text = f"📋 اختر رتبة (من {start_num} إلى {end_num})"
+      self.add_item(RoleSelect(roles=role_chunk, placeholder=placeholder_text))
+
+
+# ==================== أوامر السلاش ====================
 clear_group = app_commands.Group(
     name="clear", description="أوامر التنظيف للمسح وإزالة الرتب"
 )
@@ -253,66 +329,30 @@ async def clear_message_cmd(interaction: discord.Interaction, count: int):
   await interaction.followup.send(embed=embed)
 
 
-async def role_autocomplete(
-    interaction: discord.Interaction, current: str
-) -> list[app_commands.Choice[str]]:
-  roles = [
-      r
-      for r in interaction.guild.roles
-      if r != interaction.guild.default_role and not r.is_bot_managed()
-  ]
-  choices = []
-  for role in roles:
-    if current.lower() in role.name.lower():
-      choices.append(app_commands.Choice(name=role.name, value=str(role.id)))
-  return choices[:25]
-
-
 @clear_group.command(
     name="role",
-    description="سحب رتبة محددة من جميع الأعضاء في السيرفر (يدعم كل الرتب)",
+    description="عرض جميع رتب السيرفر في قوائم منسدلة واختيار رتبة لسحبها من الجميع",
 )
-@app_commands.describe(role="اختر أو اكتب اسم الرتبة المراد إزالتها")
-@app_commands.autocomplete(role=role_autocomplete)
-async def clear_role_cmd(interaction: discord.Interaction, role: str):
+async def clear_role_cmd(interaction: discord.Interaction):
   if not interaction.user.guild_permissions.administrator:
     await interaction.response.send_message(
         "يرجال دز ههههههههههههههه", ephemeral=False
     )
     return
 
-  try:
-    role_id = int(role)
-    target_role = interaction.guild.get_role(role_id)
-  except ValueError:
-    target_role = discord.utils.get(interaction.guild.roles, name=role)
-
-  if not target_role:
-    embed = discord.Embed(
-        description="❌ **لم يتم العثور على الرتبة المحددة!**",
-        color=discord.Color.red(),
+  view = MultiRoleSelectView(interaction.guild)
+  if not view.children:
+    await interaction.response.send_message(
+        "❌ لا توجد رتب متاحة للسحب في هذا السيرفر.", ephemeral=False
     )
-    await interaction.response.send_message(embed=embed, ephemeral=False)
     return
 
-  await interaction.response.defer(ephemeral=False)
-
-  count = 0
-  for member in target_role.members:
-    try:
-      await member.remove_roles(target_role)
-      count += 1
-    except Exception:
-      pass
-
-  embed = discord.Embed(
-      description=(
-          f"🧹 **تم إزالة رتبة {target_role.mention} بنجاح من `{count}`"
-          " عضو.**"
-      ),
-      color=discord.Color.green(),
+  await interaction.response.send_message(
+      "👇 **اختر الرتبة المراد سحبها من جميع الأعضاء (تشمل كافة رتب"
+      " السيرفر):**",
+      view=view,
+      ephemeral=False,
   )
-  await interaction.followup.send(embed=embed)
 
 
 def parse_duration_from_text(text):
@@ -390,7 +430,7 @@ async def on_message(message: discord.Message):
       except Exception as e:
         print(f"خطأ في تطبيق العقوبة: {e}")
 
-  # 2. الأوامر الإدارية (مع أسلوب برو بوت للردود)
+  # 2. الأوامر الإدارية النصية
   content = message.content.strip()
   admin_commands = [
       "#قفل",
@@ -406,6 +446,8 @@ async def on_message(message: discord.Message):
       "ارجاع",
       "تفضل",
       "شيل",
+      "مسح_رتب",
+      "سحب_رتبة",
   ]
   is_admin_cmd = any(content.startswith(cmd) for cmd in admin_commands)
 
@@ -416,6 +458,19 @@ async def on_message(message: discord.Message):
     ):
       await message.reply("يرجال دز ههههههههههههههه")
       return
+
+  if content in ["مسح_رتب", "سحب_رتبة"]:
+    view = MultiRoleSelectView(message.guild)
+    if not view.children:
+      await message.reply("❌ لا توجد رتب متاحة للسحب في هذا السيرفر.")
+      return
+
+    await message.reply(
+        "👇 **اختر الرتبة المراد سحبها من الجميع من القوائم أدناه (تضم كافة"
+        " الرتب):**",
+        view=view,
+    )
+    return
 
   if content in ["#قفل", "#غلق"]:
     await message.channel.set_permissions(
