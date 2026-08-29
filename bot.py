@@ -32,8 +32,9 @@ def keep_alive():
 keep_alive()
 
 # --- إعدادات التوكن والـ Guild ---
-TOKEN = "MTU0Mjk2NzAxOTgyODI4NTU5MA.GNN1Ui.VN1hVzgraeHhNT5zjCoZepx9reV85ncPT-Cn5U"  # التوكن الخاص بك
+TOKEN = "MTU0Mjk2NzAxOTgyODI4NTU5MA.GNN1Ui.VN1hVzgraeHhNT5zjCoZepx9reV85ncPT-Cn5U"
 GUILD_ID = discord.Object(id=1540821164300046406)
+SPECIAL_ROLE_ID = 1543204347049943121  # ID الرتبة الخاصة
 
 
 class MyBot(commands.Bot):
@@ -212,8 +213,6 @@ async def on_message(message: discord.Message):
       "#قفل",
       "#غلق",
       "#فتح",
-      "#قتل",
-      "#قتفل",
       "نضف",
       "نظف",
       "مسح",
@@ -221,6 +220,9 @@ async def on_message(message: discord.Message):
       "تكلم",
       "تكلموا",
       "بنعالي",
+      "ارجاع",
+      "تفضل",
+      "شيل",
   ]
   is_admin_cmd = any(content.startswith(cmd) for cmd in admin_commands)
 
@@ -232,24 +234,27 @@ async def on_message(message: discord.Message):
       await message.reply("يرجال دز ههههههههههههههه")
       return
 
+  # --- أمر القفل ---
   if content in ["#قفل", "#غلق"]:
     await asyncio.gather(
         message.channel.set_permissions(
             message.guild.default_role, send_messages=False
         ),
-        message.reply("🔒 **تم قفل الروم.**"),
+        message.reply("🔒 تم قفل الشات بنجاح"),
     )
     return
 
+  # --- أمر الفتح ---
   if content == "#فتح":
     await asyncio.gather(
         message.channel.set_permissions(
             message.guild.default_role, send_messages=True
         ),
-        message.reply("🔓 **تم فتح الروم.**"),
+        message.reply("🔓 تم فتح الشات بنجاح"),
     )
     return
 
+  # --- أمر التنظيف ---
   if content in ["نضف", "نظف", "مسح"]:
     prompt_msg = await message.reply("🗑️ كم عدد الرسائل التي تريد حذفها؟")
 
@@ -276,51 +281,112 @@ async def on_message(message: discord.Message):
       await fail_msg.delete()
     return
 
+  # --- أمر "اص" ---
   if content.startswith("اص"):
     if not message.mentions:
-      await message.reply("⚠️ يرجى منشن العضو! (مثال: `اص @العضو 5د`)")
+      await message.reply("تم اعطاء العضو تايم")
       return
     target = message.mentions[0]
     duration, duration_str = parse_duration_from_text(content)
     try:
       await target.timeout(duration, reason=f"بواسطة {message.author}")
-      await message.reply(
-          f"🤫 **تم إسكات {target.mention} لمدة `{duration_str}`.**"
-      )
+      await message.reply(f"تم اعطاء {target.mention} تايم لمدة {duration_str}")
     except discord.Forbidden:
       await message.reply("❌ **فشل:** رتبة البوت أقل من العضو!")
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
+  # --- أمر "تكلم" ---
   if content.startswith("تكلم") or content.startswith("تكلموا"):
     if not message.mentions:
-      await message.reply("⚠️ يرجى منشن العضو! (مثال: `تكلم @العضو`)")
+      await message.reply("تم فك التايم عن العضو")
       return
     target = message.mentions[0]
     try:
       await target.timeout(None, reason=f"فك الإسكات بواسطة {message.author}")
-      await message.reply(f"🔊 **تم فك الإسكات عن {target.mention}.**")
+      await message.reply(f"تم فك التايم عن {target.mention}")
     except discord.Forbidden:
       await message.reply("❌ **فشل:** رتبة البوت أقل من العضو!")
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
     return
 
+  # --- أمر "بنعالي" ---
   if content.startswith("بنعالي"):
     if not message.mentions:
-      await message.reply("⚠️ يرجى منشن العضو! (مثال: `بنعالي @العضو`)")
+      await message.reply("تم اعطاء العضو باند نهائي")
       return
     target = message.mentions[0]
     try:
       await target.ban(reason=f"بواسطة {message.author}")
-      await message.reply(f"👞 **تم حظر {target.mention}.**")
+      await message.reply(f"تم اعطاء {target.mention} باند نهائي")
     except discord.Forbidden:
       await message.reply(
           "❌ **فشل:** رتبة البوت أقل من العضو أو ينقصه صلاحية Ban!"
       )
     except Exception as e:
       await message.reply(f"❌ **خطأ:** `{e}`")
+    return
+
+  # --- أمر "ارجاع" ---
+  if content.startswith("ارجاع"):
+    if not message.mentions:
+      await message.reply("تم فك الباند عن العضو")
+      return
+    target = message.mentions[0]
+    try:
+      await message.guild.unban(target, reason=f"فك الحظر بواسطة {message.author}")
+      await message.reply(f"تم فك الباند عن {target.mention}")
+    except discord.NotFound:
+      await message.reply("❌ **خطأ:** هذا العضو غير محظور أساساً!")
+    except discord.Forbidden:
+      await message.reply("❌ **فشل:** ينقص البوت صلاحية Ban Members!")
+    except Exception as e:
+      await message.reply(f"❌ **خطأ:** `{e}`")
+    return
+
+  # --- أمر "تفضل" ---
+  if content.startswith("تفضل"):
+    if not message.mentions:
+      await message.reply("تم اعطاء الرتبة للعضو بنجاح")
+      return
+    target = message.mentions[0]
+    role = message.guild.get_role(SPECIAL_ROLE_ID)
+    if not role:
+      await message.reply("❌ **خطأ:** لم يتم العثور على الرتبة بالـ ID المحدد!")
+      return
+    try:
+      await target.add_roles(role)
+      await message.reply(f"تم اعطاء الرتبة لـ {target.mention} بنجاح ✅")
+    except discord.Forbidden:
+      await message.reply("❌ **فشل:** رتبة البوت أقل من الرتبة المراد إعطاؤها!")
+    except Exception as e:
+      await message.reply(f"❌ **خطأ:** `{e}`")
+    return
+
+  # --- أمر "شيل" ---
+  if content == "شيل":
+    role = message.guild.get_role(SPECIAL_ROLE_ID)
+    if not role:
+      await message.reply("❌ **خطأ:** لم يتم العثور على الرتبة بالـ ID المحدد!")
+      return
+
+    status_msg = await message.reply("⚙️ جاري نزع الرتبة من الجميع...")
+    count = 0
+    try:
+      for member in role.members:
+        await member.remove_roles(role)
+        count += 1
+      await status_msg.edit(
+          content=f"🧹 تم نزع الرتبة بنجاح من جميع الأعضاء (العدد: {count})"
+      )
+    except discord.Forbidden:
+      await status_msg.edit(
+          content="❌ **فشل:** رتبة البوت أقل من الرتبة المراد إزالتها!"
+      )
+    except Exception as e:
+      await status_msg.edit(content=f"❌ **خطأ:** `{e}`")
     return
 
   await bot.process_commands(message)
