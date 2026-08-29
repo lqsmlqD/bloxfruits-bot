@@ -276,18 +276,15 @@ async def on_message(message: discord.Message):
 
         current_count = user_violations[user_id]["count"]
         timeout_minutes = current_count * 5
-        next_timeout = (current_count + 1) * 5
 
         await message.author.timeout(
             timedelta(minutes=timeout_minutes),
             reason=f"مخالفة الألفاظ رقم {current_count} خلال 24 ساعة",
         )
 
+        # الرد بالصيغة المعدلة المطلوبة
         warn_msg = await message.channel.send(
-            f"🚫 {message.author.mention} **تم حذف رسالتك ومعاقبتك بتايم أوت"
-            f" لمدة `{timeout_minutes}` دقائق (المخالفة رقم"
-            f" {current_count}).**\n⚠️ **المرة القادمة ستكون العقوبة"
-            f" `{next_timeout}` دقائق!**"
+            f"🚫 **تم معاقبة {message.author.mention} بإعطائه `{timeout_minutes}` دقائق تايم بسبب الشتم.**\n⚠️ **المرة القادمة ستكون العقوبة أكبر!**"
         )
         await asyncio.sleep(6)
         await warn_msg.delete()
