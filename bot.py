@@ -35,20 +35,25 @@ keep_alive()
 TOKEN = "MTU0Mjk2NzAxOTgyODI4NTU5MA.GNN1Ui.VN1hVzgraeHhNT5zjCoZepx9reV85ncPT-Cn5U"
 GUILD_ID = discord.Object(id=1540821164300046406)
 SPECIAL_ROLE_ID = 1543204347049943121
-PUNISHMENT_ROLE_ID = 1541534824152563823  # رتبة العقوبة المحددة
+PUNISHMENT_ROLE_ID = 1541534824152563823
 
-# قائمة بأشهر 10 مابات في روبلوكس للبحث عن سكربتاتها
-TOP_10_GAMES = [
+# قائمة موسعة تضم أشهر وأقوى مابات روبلوكس
+TOP_GAMES = [
     "Blox Fruits",
     "King Legacy",
     "Pet Simulator 99",
-    "Adopt Me",
     "Blade Ball",
+    "Adopt Me",
     "Brookhaven",
     "Da Hood",
     "Arsenal",
     "BedWars",
     "Anime Adventures",
+    "Grand Piece Online",
+    "All Star Tower Defense",
+    "Shindo Life",
+    "Doors",
+    "Murder Mystery 2",
 ]
 
 # ==================== نظام التحدي للإداريين ====================
@@ -158,7 +163,8 @@ bot = MyBot()
 
 
 async def fetch_scripts_from_api(game_name: str):
-    url = f"https://scriptblox.com/api/script/search?q={game_name}&max=10&mode=free"
+    # جلب أفضل 15 سكربت متوفر للماب
+    url = f"https://scriptblox.com/api/script/search?q={game_name}&max=15&mode=free"
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url, timeout=5) as resp:
@@ -187,7 +193,7 @@ class ScriptDetailButton(discord.ui.Button):
         embed = discord.Embed(
             title=f"📜 {title}",
             description=(
-                f"**المشاهدات:** `{views}` | **يتطلب مفتاح (Key)؟**"
+                f"👁️ **المشاهدات:** `{views}` | 🔑 **يتطلب مفتاح (Key)؟**"
                 f" `{key_status}`\n\n```lua\n{raw_script}\n```"
             ),
             color=discord.Color.green(),
@@ -198,8 +204,8 @@ class ScriptDetailButton(discord.ui.Button):
 class ScriptsView(discord.ui.View):
 
     def __init__(self, scripts):
-        super().__init__(timeout=120)
-        for idx, s in enumerate(scripts[:10]):
+        super().__init__(timeout=180)
+        for idx, s in enumerate(scripts):
             self.add_item(
                 ScriptDetailButton(
                     label=f"كود السكربت {idx + 1}", script_data=s
@@ -214,12 +220,12 @@ class GameSelect(discord.ui.Select):
             discord.SelectOption(
                 label=game,
                 value=game,
-                description=f"عرض أشهر 10 سكربتات لـ {game}",
+                description=f"عرض أحدث وأقوى السكربتات لـ {game}",
             )
-            for game in TOP_10_GAMES
+            for game in TOP_GAMES
         ]
         super().__init__(
-            placeholder="🎮 اختر الماب لعرض أحدث وأشهر سكربتاته...",
+            placeholder="🎮 اختر الماب لعرض أشهر وأقوى سكربتاته...",
             min_values=1,
             max_values=1,
             options=options,
@@ -233,47 +239,49 @@ class GameSelect(discord.ui.Select):
 
         if not scripts:
             await interaction.followup.send(
-                f"❌ لم يتم العثور على سكربتات حديثة لماب **{game_selected}**"
+                f"❌ لم يتم العثور على سكربتات شغال لـ **{game_selected}**"
                 " حالياً."
             )
             return
 
         embed = discord.Embed(
-            title=f"🏴‍☠️ أشهر 10 سكربتات لماب: {game_selected}",
+            title=f"⚡ أشهر وأقوى السكربتات لماب: {game_selected}",
             description=(
-                "تم جلب السكربتات تلقائياً ومباشرةً من الإنترنت. اضغط على أزرار"
-                " الأكواد بالأسفل لنسخ السكربت:\n\n"
+                "تم جلب السكربتات التلقائية المتاحة على الإنترنت. اضغط على زر"
+                " الكود المطلوب بالأسفل لنقله مباشرة:\n\n"
             ),
             color=discord.Color.gold(),
         )
 
-        for idx, s in enumerate(scripts[:10]):
+        for idx, s in enumerate(scripts):
             key_text = "🔑 بـ Key" if s.get("key") else "✅ بدون Key"
+            views = s.get("views", 0)
             embed.description += (
-                f"**{idx + 1}.** {s.get('title')} (`{key_text}`)\n"
+                f"**{idx + 1}.** {s.get('title')} (`{key_text}` | 👁️ `{views}`"
+                " مشاهدة)\n"
             )
 
-        view = ScriptsView(scripts[:10])
+        view = ScriptsView(scripts)
         await interaction.followup.send(embed=embed, view=view)
 
 
 class GameSelectView(discord.ui.View):
 
     def __init__(self):
-        super().__init__(timeout=120)
+        super().__init__(timeout=180)
         self.add_item(GameSelect())
 
 
 @app_commands.command(
-    name="script", description="عرض أشهر 10 مابات روبلوكس وجلب سكربتاتها فورياً"
+    name="script", description="عرض أشهر مابات روبلوكس وجلب أقوى سكربتاتها"
 )
 async def script_command(interaction: discord.Interaction):
     view = GameSelectView()
     embed = discord.Embed(
-        title="🎮 قائمة أشهر 10 مابات في Roblox",
+        title="🎮 قائمة أشهر مابات Roblox",
         description=(
             "اختر الماب المطلوبة من القائمة المنسدلة بالأسفل ليقوم البوت بجلب"
-            " أحدث وأشهر 10 سكربتات للماب مباشرة بدون توقف:"
+            " أشهر وأقوى السكربتات الخاصة بها مباشرة:"
         ),
         color=discord.Color.blue(),
     )
@@ -399,7 +407,7 @@ async def clear_message_cmd(interaction: discord.Interaction, count: int):
 async def clear_role_cmd(interaction: discord.Interaction):
     if not interaction.user.guild_permissions.administrator:
         await interaction.response.send_message(
-            "تراني مو عبد عندك", ephemeral=False
+            "يرجال دز ههههههههههههههه", ephemeral=False
         )
         return
 
