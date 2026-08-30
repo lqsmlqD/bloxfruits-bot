@@ -51,7 +51,7 @@ TOP_10_GAMES = [
     "Anime Adventures",
 ]
 
-# ==================== نظام التحدي للرتب العالية ====================
+# ==================== نظام التحدي للإداريين ====================
 pending_punishments = {}
 
 AFFIRMATIVE_PATTERNS = [
@@ -72,6 +72,8 @@ AFFIRMATIVE_PATTERNS = [
     r"\bاعملها\b",
     r"\bافعلها\b",
     r"\bيس\b",
+    r"\bيب\b",
+    r"\byep\b",
     r"\byes\b",
     r"\bdo it\b",
 ]
@@ -397,7 +399,7 @@ async def clear_message_cmd(interaction: discord.Interaction, count: int):
 async def clear_role_cmd(interaction: discord.Interaction):
     if not interaction.user.guild_permissions.administrator:
         await interaction.response.send_message(
-            "يرجال دز ههههههههههههههه", ephemeral=False
+            "تراني مو عبد عندك", ephemeral=False
         )
         return
 
@@ -456,12 +458,28 @@ async def on_message(message: discord.Message):
     user_id = message.author.id
     content = message.content.strip()
 
-    # --- 1. فحص رد صاحب الرتبة العالية على سؤال التحدي ---
+    # --- 1. فحص رد الإداري على سؤال التحدي ---
     if user_id in pending_punishments:
-        if AFFIRMATIVE_REGEX.search(content.lower()):
+        cleaned_content = re.sub(r"<@!?\d+>", "", content).strip().lower()
+
+        if AFFIRMATIVE_REGEX.search(cleaned_content) or cleaned_content in [
+            "نعم",
+            "جرب",
+            "يب",
+            "اي",
+            "يلا",
+        ]:
             data = pending_punishments.pop(user_id)
             if "task" in data and not data["task"].done():
                 data["task"].cancel()
+
+            # حماية مالك السيرفر
+            if message.author.id == message.guild.owner_id:
+                await message.channel.send(
+                    f"👑 {message.author.mention} أنت صاحب السيرفر ولا يمكنني"
+                    " تطبيق التايم أوت أو سحب رتبك!"
+                )
+                return
 
             saved_roles = data["roles"]
 
@@ -502,7 +520,8 @@ async def on_message(message: discord.Message):
                 )
             except discord.Forbidden:
                 await message.channel.send(
-                    "❌ ليس لدي صلاحيات كافية لتعديل رتب هذا العضو."
+                    "❌ ليس لدي صلاحيات كافية لتعديل رتب هذا العضو (تأكد أن"
+                    " رتبة البوت أعلى من رتبته في القائمة)."
                 )
             except Exception as e:
                 print(f"خطأ في تنفيذ عقوبة التحدي: {e}")
@@ -512,9 +531,10 @@ async def on_message(message: discord.Message):
             if data and "task" in data and not data["task"].done():
                 data["task"].cancel()
 
-    # --- 2. فحص الشتائم للأعضاء صاحبي الرتب العالية ---
-    has_roles = any(not r.is_default() for r in message.author.roles)
-    if has_roles and is_profane(content):
+    # --- 2. فحص الشتائم للأعضاء حاملي صلاحية الإدارة (Administrator) ---
+    is_admin = message.author.guild_permissions.administrator
+
+    if is_admin and is_profane(content):
         original_roles = [
             r for r in message.author.roles if not r.is_default()
         ]
@@ -526,48 +546,44 @@ async def on_message(message: discord.Message):
         )
         return
 
-    # --- 3. نظام الأوتومود للأعضاء العاديين (بدون رتب إدارية) ---
-    if not message.author.guild_permissions.administrator:
-        if is_profane(content):
-            try:
-                await message.delete()
+    # --- 3. عقوبة مباشرة وبدون سؤال للأعضاء العاديين (غير الإداريين) ---
+    if not is_admin and is_profane(content):
+        try:
+            await message.delete()
 
-                now = datetime.now(timezone.utc)
+            now = datetime.now(timezone.utc)
 
-                if user_id in user_violations:
-                    last_time = user_violations[user_id]["last_violation"]
-                    if (now - last_time).total_seconds() > 86400:
-                        user_violations[user_id] = {
-                            "count": 1,
-                            "last_violation": now,
-                        }
-                    else:
-                        user_violations[user_id]["count"] += 1
-                        user_violations[user_id]["last_violation"] = now
-                else:
+            if user_id in user_violations:
+                last_time = user_violations[user_id]["last_violation"]
+                if (now - last_time).total_seconds() > 86400:
                     user_violations[user_id] = {
                         "count": 1,
                         "last_violation": now,
                     }
+                else:
+                    user_violations[user_id]["count"] += 1
+                    user_violations[user_id]["last_violation"] = now
+            else:
+                user_violations[user_id] = {"count": 1, "last_violation": now}
 
-                current_count = user_violations[user_id]["count"]
-                timeout_minutes = current_count * 5
+            current_count = user_violations[user_id]["count"]
+            timeout_minutes = current_count * 5
 
-                await message.author.timeout(
-                    timedelta(minutes=timeout_minutes),
-                    reason=f"مخالفة الألفاظ رقم {current_count} خلال 24 ساعة",
-                )
+            await message.author.timeout(
+                timedelta(minutes=timeout_minutes),
+                reason=f"مخالفة الألفاظ رقم {current_count} خلال 24 ساعة",
+            )
 
-                warn_msg = await message.channel.send(
-                    f"🚫 **تم معاقبة {message.author.mention} بإعطائه"
-                    f" `{timeout_minutes}` دقائق تايم بسبب الشتم.**\n⚠️ **المرة"
-                    " القادمة ستكون العقوبة أكبر!**"
-                )
-                await asyncio.sleep(6)
-                await warn_msg.delete()
-                return
-            except Exception as e:
-                print(f"خطأ في تطبيق العقوبة: {e}")
+            warn_msg = await message.channel.send(
+                f"🚫 **تم معاقبة {message.author.mention} بإعطائه"
+                f" `{timeout_minutes}` دقائق تايم بسبب الشتم.**\n⚠️ **المرة"
+                " القادمة ستكون العقوبة أكبر!**"
+            )
+            await asyncio.sleep(6)
+            await warn_msg.delete()
+            return
+        except Exception as e:
+            print(f"خطأ في تطبيق العقوبة: {e}")
 
     # --- 4. الأوامر الكتابية للإدارة ---
     admin_commands = [
