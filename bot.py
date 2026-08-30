@@ -5,6 +5,7 @@ import os
 import re
 from threading import Thread
 
+import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
@@ -34,6 +35,20 @@ keep_alive()
 TOKEN = "MTU0Mjk2NzAxOTgyODI4NTU5MA.GNN1Ui.VN1hVzgraeHhNT5zjCoZepx9reV85ncPT-Cn5U"
 GUILD_ID = discord.Object(id=1540821164300046406)
 SPECIAL_ROLE_ID = 1543204347049943121
+
+# قائمة بأشهر 10 مابات في روبلوكس للبحث عن سكربتاتها
+TOP_10_GAMES = [
+    "Blox Fruits",
+    "King Legacy",
+    "Pet Simulator 99",
+    "Adopt Me",
+    "Blade Ball",
+    "Brookhaven",
+    "Da Hood",
+    "Arsenal",
+    "BedWars",
+    "Anime Adventures",
+]
 
 
 # ==================== نظام الأوتومود وتنظيف النصوص ====================
@@ -84,7 +99,7 @@ def is_profane(message_content: str) -> bool:
   return False
 
 
-# ==================== إعدادات البوت والسكربتات ====================
+# ==================== إعدادات البوت والسكربتات التلقائية ====================
 class MyBot(commands.Bot):
 
   def __init__(self):
@@ -103,15 +118,21 @@ class MyBot(commands.Bot):
 bot = MyBot()
 
 
-def load_local_scripts():
-  try:
-    with open("scripts.json", "r", encoding="utf-8") as f:
-      return json.load(f)
-  except FileNotFoundError:
-    return []
+# دالة جلب السكربتات المباشرة من ScriptBlox API
+async def fetch_scripts_from_api(game_name: str):
+  url = f"https://scriptblox.com/api/script/search?q={game_name}&max=10&mode=free"
+  async with aiohttp.ClientSession() as session:
+    try:
+      async with session.get(url, timeout=5) as resp:
+        if resp.status == 200:
+          data = await resp.json()
+          return data.get("result", {}).get("scripts", [])
+    except Exception as e:
+      print(f"خطأ في جلب سكربتات {game_name}: {e}")
+  return []
 
 
-class ScriptButton(discord.ui.Button):
+class ScriptDetailButton(discord.ui.Button):
 
   def __init__(self, label, script_data):
     super().__init__(label=label, style=discord.ButtonStyle.primary)
@@ -119,103 +140,96 @@ class ScriptButton(discord.ui.Button):
 
   async def callback(self, interaction: discord.Interaction):
     raw_script = self.script_data.get("script", "-- لا يوجد كود متوفر")
-    title = self.script_data.get("title", "Blox Fruits Script")
+    title = self.script_data.get("title", "Roblox Script")
     key_status = "نعم" if self.script_data.get("key", False) else "لا (بدون كي)"
+    views = self.script_data.get("views", 0)
 
     embed = discord.Embed(
         title=f"📜 {title}",
         description=(
-            f"**يتطلب مفتاح (Key)؟** `{key_status}`\n\n```lua\n{raw_script}\n```"
+            f"**المشاهدات:** `{views}` | **يتطلب مفتاح (Key)؟**"
+            f" `{key_status}`\n\n```lua\n{raw_script}\n```"
         ),
         color=discord.Color.green(),
     )
     await interaction.response.send_message(embed=embed, ephemeral=False)
 
 
-class LocalScriptPaginatorView(discord.ui.View):
+class ScriptsView(discord.ui.View):
 
   def __init__(self, scripts):
     super().__init__(timeout=120)
-    self.scripts = scripts
-    self.current_page = 0
-    self.items_per_page = 10
-    self.build_ui()
+    for idx, s in enumerate(scripts[:10]):
+      self.add_item(ScriptDetailButton(label=f"كود السكربت {idx + 1}", script_data=s))
 
-  def build_ui(self):
-    self.clear_items()
-    start_idx = self.current_page * self.items_per_page
-    end_idx = min(start_idx + self.items_per_page, len(self.scripts))
-    page_scripts = self.scripts[start_idx:end_idx]
 
-    for idx, script in enumerate(page_scripts):
-      self.add_item(ScriptButton(label=str(idx + 1), script_data=script))
+class GameSelect(discord.ui.Select):
 
-    prev_btn = discord.ui.Button(
-        label="◀ السابق",
-        style=discord.ButtonStyle.secondary,
-        disabled=(self.current_page == 0),
-        row=2,
-    )
-    next_btn = discord.ui.Button(
-        label="التالي ▶",
-        style=discord.ButtonStyle.secondary,
-        disabled=(end_idx >= len(self.scripts)),
-        row=2,
+  def __init__(self):
+    options = [
+        discord.SelectOption(
+            label=game, value=game, description=f"عرض أشهر 10 سكربتات لـ {game}"
+        )
+        for game in TOP_10_GAMES
+    ]
+    super().__init__(
+        placeholder="🎮 اختر الماب لعرض أحدث وأشهر سكربتاته...",
+        min_values=1,
+        max_values=1,
+        options=options,
     )
 
-    prev_btn.callback = self.prev_page
-    next_btn.callback = self.next_page
+  async def callback(self, interaction: discord.Interaction):
+    game_selected = self.values[0]
+    await interaction.response.defer(ephemeral=False)
 
-    self.add_item(prev_btn)
-    self.add_item(next_btn)
+    scripts = await fetch_scripts_from_api(game_selected)
 
-  async def prev_page(self, interaction: discord.Interaction):
-    self.current_page -= 1
-    self.build_ui()
-    embed = self.get_page_embed()
-    await interaction.response.edit_message(embed=embed, view=self)
-
-  async def next_page(self, interaction: discord.Interaction):
-    self.current_page += 1
-    self.build_ui()
-    embed = self.get_page_embed()
-    await interaction.response.edit_message(embed=embed, view=self)
-
-  def get_page_embed(self):
-    total = len(self.scripts)
-    start_idx = self.current_page * self.items_per_page
-    end_idx = min(start_idx + self.items_per_page, total)
-
-    description = (
-        f"⭐ **قائمة الأشهر والأكثر أماناً لـ Blox Fruits** (عدد"
-        f" السكربتات: {total})\n\n"
-    )
-    for i, s in enumerate(self.scripts[start_idx:end_idx]):
-      description += f"**{i+1}.** {s.get('title')} ✅\n"
+    if not scripts:
+      await interaction.followup.send(
+          f"❌ لم يتم العثور على سكربتات حديثة لماب **{game_selected}** حالياً."
+      )
+      return
 
     embed = discord.Embed(
-        title=f"🏴‍☠️ السكربتات الموثوقة (صفحة {self.current_page + 1})",
-        description=description,
+        title=f"🏴‍☠️ أشهر 10 سكربتات لماب: {game_selected}",
+        description=(
+            "تم جلب السكربتات تلقائياً ومباشرةً من الإنترنت. اضغط على أزرار"
+            " الأكواد بالأسفل لنسخ السكربت:\n\n"
+        ),
         color=discord.Color.gold(),
     )
-    embed.set_footer(text="اضغط رقم السكربت للحصول على كوده المباشر.")
-    return embed
+
+    for idx, s in enumerate(scripts[:10]):
+      key_text = "🔑 بـ Key" if s.get("key") else "✅ بدون Key"
+      embed.description += (
+          f"**{idx + 1}.** {s.get('title')} (`{key_text}`)\n"
+      )
+
+    view = ScriptsView(scripts[:10])
+    await interaction.followup.send(embed=embed, view=view)
+
+
+class GameSelectView(discord.ui.View):
+
+  def __init__(self):
+    super().__init__(timeout=120)
+    self.add_item(GameSelect())
 
 
 @app_commands.command(
-    name="script", description="عرض السكربتات الشهيرة والمستقرة لـ Blox Fruits"
+    name="script", description="عرض أشهر 10 مابات روبلوكس وجلب سكربتاتها فورياً"
 )
 async def script_command(interaction: discord.Interaction):
-  scripts = load_local_scripts()
-  if not scripts:
-    await interaction.response.send_message(
-        "❌ لم يتم العثور على `scripts.json`. شغل `fetch_all.py` أولاً!",
-        ephemeral=False,
-    )
-    return
-
-  view = LocalScriptPaginatorView(scripts)
-  embed = view.get_page_embed()
+  view = GameSelectView()
+  embed = discord.Embed(
+      title="🎮 قائمة أشهر 10 مابات في Roblox",
+      description=(
+          "اختر الماب المطلوبة من القائمة المنسدلة بالأسفل ليقوم البوت بجلب"
+          " أحدث وأشهر 10 سكربتات للماب مباشرة بدون توقف:"
+      ),
+      color=discord.Color.blue(),
+  )
   await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
 
 
@@ -276,19 +290,15 @@ class MultiRoleSelectView(discord.ui.View):
 
   def __init__(self, guild: discord.Guild):
     super().__init__(timeout=120)
-    # جلب جميع رتب السيرفر باستثناء @everyone
     all_roles = [
         r for r in guild.roles if r != guild.default_role and not r.managed
     ]
-
-    # تقسيم الرتب إلى مجموعات (كل مجموعة 25 رتبة كحد أقصى)
     chunk_size = 25
     chunks = [
         all_roles[i : i + chunk_size]
         for i in range(0, len(all_roles), chunk_size)
     ]
 
-    # إنشاء قائمة منسدلة لكل 25 رتبة
     for index, role_chunk in enumerate(chunks):
       start_num = (index * chunk_size) + 1
       end_num = start_num + len(role_chunk) - 1
@@ -392,7 +402,6 @@ async def on_message(message: discord.Message):
   if message.author.bot or not message.guild:
     return
 
-  # 1. فحص الأوتومود والعقوبات المتصاعدة (لغير الأدمن)
   if not message.author.guild_permissions.administrator:
     if is_profane(message.content):
       try:
@@ -430,7 +439,6 @@ async def on_message(message: discord.Message):
       except Exception as e:
         print(f"خطأ في تطبيق العقوبة: {e}")
 
-  # 2. الأوامر الإدارية النصية
   content = message.content.strip()
   admin_commands = [
       "#قفل",
