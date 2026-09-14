@@ -1,129 +1,144 @@
--- // 1. تحميل مكتبة الواجهات Rayfield
+-- // 1. تحميل مكتبة Rayfield
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "VX Leviathan Destroyer V2 | Fast Attack Edition",
-   LoadingTitle = "جاري تحميل السكربت...",
+   Name = "VX Leviathan Overlord V3 | Ultimate",
+   LoadingTitle = "جاري تحميل محرك القوة...",
    LoadingSubtitle = "by VX Team",
    ConfigurationSaving = { Enabled = false }
 })
 
 -- // 2. المتغيرات العامة
-getgenv().BoatSpeed = 150
-getgenv().BoatHeight = 30
+getgenv().BoatSpeed = 180
+getgenv().BoatHeight = 35
+getgenv().AutoBuyBoat = false
+getgenv().SelectedBoat = "Beast Hunter"
 getgenv().AutoStopOnFrozen = true
 getgenv().AutoKillLeviathan = false
 getgenv().UseDragonSkills = true
-getgenv().SuperFastAttack = false -- زر ضربات M1 السريعة جداً
-getgenv().AttackSpeedMulti = 5    -- عدد الضربات في الضغطة الواحدة
+getgenv().UltraFastM1 = false
 getgenv().AutoHarpoonHeart = false
 getgenv().AutoReturnTiki = false
 
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
--- // 3. التبويبات والواجهة
+-- // 3. إنشـاء الواجهة والتصنيفات
 
-local BoatTab = Window:CreateTab("الملاحة والسفينة", 4483362458)
+-- [تبويب إدارة السفن والملاحة]
+local BoatTab = Window:CreateTab("إدارة السفن والملاحة", 4483362458)
+
+BoatTab:CreateDropdown({
+   Name = "اختر نوع السفينة",
+   Options = {"Beast Hunter", "Grand Brig", "Swamp Pirate", "Sloop"},
+   CurrentOption = {"Beast Hunter"},
+   Flag = "BoatType",
+   Callback = function(Option)
+       getgenv().SelectedBoat = typeof(Option) == "table" and Option[1] or Option
+   end,
+})
+
+BoatTab:CreateButton({
+   Name = "شراء وقيادة السفينة تلقائياً الآن",
+   Callback = function()
+       pcall(function()
+           -- استدعاء ريموت شراء السفينة
+           local comms = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommF_")
+           if comms then
+               comms:InvokeServer("BuyBoat", getgenv().SelectedBoat)
+               task.wait(0.5)
+               -- البحث عن السفينة والجلوس بها
+               for _, boat in pairs(workspace.Boats:GetChildren()) do
+                   if boat:FindFirstChild("Owner") and boat.Owner.Value == LocalPlayer then
+                       if boat:FindFirstChild("VehicleSeat") and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+                           LocalPlayer.Character.HumanoidRootPart.CFrame = boat.VehicleSeat.CFrame
+                       end
+                   end
+               end
+           end
+       end)
+   end,
+})
 
 BoatTab:CreateSlider({
-   Name = "سرعة السفينة",
-   Range = {50, 400},
+   Name = "سرعة طيران السفينة (سلسة بدون لاق)",
+   Range = {50, 450},
    Increment = 10,
    Suffix = "Speed",
-   CurrentValue = 150,
+   CurrentValue = 180,
    Flag = "BoatSpeed",
    Callback = function(Value) getgenv().BoatSpeed = Value end,
 })
 
 BoatTab:CreateToggle({
-   Name = "إيقاف تلقائي عند ظهور Frozen Dimension",
+   Name = "إيقاف الحركة عند رسبن Frozen Dimension",
    CurrentValue = true,
    Flag = "AutoStop",
    Callback = function(Value) getgenv().AutoStopOnFrozen = Value end,
 })
 
-local FarmTab = Window:CreateTab("قتال الليفايثن والمهارات", 4483362458)
+-- [تبويب الهجوم الخارق والمهارات]
+local AttackTab = Window:CreateTab("نظام القتال والسلاح", 4483362458)
 
-FarmTab:CreateToggle({
-   Name = "تفعيل قتال الليفايثن (Auto Kill)",
+AttackTab:CreateToggle({
+   Name = "تفعيل قتل الليفايثن والذيل تلقائياً (Auto Kill)",
    CurrentValue = false,
    Flag = "AutoKill",
    Callback = function(Value) getgenv().AutoKillLeviathan = Value end,
 })
 
--- ZAR M1 FAST ATTACK (زر مخصص للضرب الخارق)
-FarmTab:CreateToggle({
-   Name = "تفعيل Fast Attack خارق وسريع جداً (M1)",
+AttackTab:CreateToggle({
+   Name = "Fast Attack خفيف بدون لاق (ملاحة بحرية وسريعة)",
    CurrentValue = false,
-   Flag = "SuperFastAttack",
-   Callback = function(Value)
-       getgenv().SuperFastAttack = Value
-   end,
+   Flag = "UltraFastM1",
+   Callback = function(Value) getgenv().UltraFastM1 = Value end,
 })
 
-FarmTab:CreateSlider({
-   Name = "كثافة الضربات في الكليك (Attack Multiplier)",
-   Range = {1, 15},
-   Increment = 1,
-   Suffix = "Hits",
-   CurrentValue = 5,
-   Flag = "AttackMulti",
-   Callback = function(Value) getgenv().AttackSpeedMulti = Value end,
-})
-
-FarmTab:CreateToggle({
-   Name = "إطلاق مهارات Dragon / Dragon Storm (Z, X, C, V, F)",
+AttackTab:CreateToggle({
+   Name = "إطلاق مهارات Dragon / Dragon Storm تلقائياً",
    CurrentValue = true,
    Flag = "UseSkills",
    Callback = function(Value) getgenv().UseDragonSkills = Value end,
 })
 
+-- [تبويب صيد وتأمين القلب]
 local HeartTab = Window:CreateTab("صيد القلب والتأمين", 4483362458)
 
 HeartTab:CreateToggle({
-   Name = "صيد وسحب القلب تلقائياً (Auto Catch Heart)",
+   Name = "صيد وسحب القلب تلقائياً (Auto Catch)",
    CurrentValue = false,
    Flag = "AutoCatchHeart",
    Callback = function(Value) getgenv().AutoHarpoonHeart = Value end,
 })
 
 HeartTab:CreateToggle({
-   Name = "العودة التلقائية بالقلب إلى Tiki Outpost",
+   Name = "العودة بالقلب تلقائياً لـ Tiki Outpost",
    CurrentValue = false,
    Flag = "AutoReturnTiki",
    Callback = function(Value) getgenv().AutoReturnTiki = Value end,
 })
 
--- // 4. المحركات المتقدمة للضرب المباشر (Super Fast Attack Logic)
+-- // 4. المحركات المتقدمة (Lightweight Engines)
 
-local function executeFastM1()
-    for i = 1, getgenv().AttackSpeedMulti do
-        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 1)
-        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 1)
-    end
-end
-
-local function castSkill(key)
-    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode[key], false, game)
-    task.wait(0.02)
-    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode[key], false, game)
-end
-
--- حلقة ضربات Fast Attack المخصصة الخارقة
+-- محرك Fast Attack الخفيف بدون تقطيع أو اللاق
 task.spawn(function()
     while true do
-        task.wait() -- أسرع استجابة فريمات ممكبة
-        if getgenv().SuperFastAttack then
+        task.wait(0.03) -- سرعة متوافقة تجنب طرد الـ Anti-Cheat
+        if getgenv().UltraFastM1 then
             pcall(function()
-                executeFastM1()
+                local tool = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                if tool then
+                    tool:Activate()
+                end
             end)
         end
     end
 end)
 
--- حلقة القتال وتتبع ذيل الليفايثن
+-- محرك القتال والتمركز الذكي فوق أجزاء وذيل الليفايثن
 task.spawn(function()
     while true do
         task.wait(0.05)
@@ -142,14 +157,16 @@ task.spawn(function()
                 end
 
                 if targetPart and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = targetPart.CFrame * CFrame.new(0, 25, 0)
+                    -- الوقوف بمسافة آمنة لتفادي الضرر وتسهيل إصابة المهارات
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = targetPart.CFrame * CFrame.new(0, 28, 0)
                     
                     if getgenv().UseDragonSkills then
-                        castSkill("Z")
-                        castSkill("X")
-                        castSkill("C")
-                        castSkill("V")
-                        castSkill("F")
+                        local keys = {"Z", "X", "C", "V", "F"}
+                        for _, key in ipairs(keys) do
+                            VirtualInputManager:SendKeyEvent(true, Enum.KeyCode[key], false, game)
+                            task.wait(0.01)
+                            VirtualInputManager:SendKeyEvent(false, Enum.KeyCode[key], false, game)
+                        end
                     end
                 end
             end)
@@ -157,7 +174,7 @@ task.spawn(function()
     end
 end)
 
--- حلقة صيد القلب والتحرك بالسفينة
+-- محرك صيد وسحب القلب والعودة الآلية لـ Tiki
 task.spawn(function()
     local tikiCoords = Vector3.new(-16200, 20, 4500)
     while true do
@@ -173,14 +190,17 @@ task.spawn(function()
                     local distance = (boatPrimary.Position - heartPos.Position).Magnitude
                     
                     if distance > 40 then
-                        local bodyVel = boatPrimary:FindFirstChild("VX_Vel") or Instance.new("BodyVelocity")
-                        bodyVel.Name = "VX_Vel"
-                        bodyVel.MaxForce = Vector3.new(1e6, 0, 1e6)
-                        bodyVel.Velocity = (heartPos.Position - boatPrimary.Position).Unit * getgenv().BoatSpeed
-                        bodyVel.Parent = boatPrimary
+                        local linVel = boatPrimary:FindFirstChild("VX_Velocity") or Instance.new("LinearVelocity")
+                        local attachment = boatPrimary:FindFirstChild("RootAttachment") or Instance.new("Attachment", boatPrimary)
+                        
+                        linVel.Name = "VX_Velocity"
+                        linVel.MaxForce = 1e6
+                        linVel.VectorVelocity = (heartPos.Position - boatPrimary.Position).Unit * getgenv().BoatSpeed
+                        linVel.Attachment0 = attachment
+                        linVel.Parent = boatPrimary
                     else
-                        if boatPrimary:FindFirstChild("VX_Vel") then
-                            boatPrimary.VX_Vel.Velocity = Vector3.zero
+                        if boatPrimary:FindFirstChild("VX_Velocity") then
+                            boatPrimary.VX_Velocity.VectorVelocity = Vector3.zero
                         end
                         
                         local harpoon = LocalPlayer.Backpack:FindFirstChild("Harpoon") or LocalPlayer.Character:FindFirstChild("Harpoon")
@@ -191,11 +211,10 @@ task.spawn(function()
                         
                         if getgenv().AutoReturnTiki then
                             task.wait(1)
-                            local bodyVel = boatPrimary:FindFirstChild("VX_Vel") or Instance.new("BodyVelocity")
-                            bodyVel.Name = "VX_Vel"
-                            bodyVel.MaxForce = Vector3.new(1e6, 0, 1e6)
-                            bodyVel.Velocity = (tikiCoords - boatPrimary.Position).Unit * getgenv().BoatSpeed
-                            bodyVel.Parent = boatPrimary
+                            local linVel = boatPrimary:FindFirstChild("VX_Velocity")
+                            if linVel then
+                                linVel.VectorVelocity = (tikiCoords - boatPrimary.Position).Unit * getgenv().BoatSpeed
+                            end
                         end
                     end
                 end
@@ -204,7 +223,7 @@ task.spawn(function()
     end
 end)
 
--- حلقة إيقاف الحركة عند البعد المتجمد
+-- كاشف وإيقاف Frozen Dimension
 task.spawn(function()
     while true do
         task.wait(0.5)
@@ -213,8 +232,8 @@ task.spawn(function()
             if frozenZone then
                 getgenv().AutoKillLeviathan = false
                 Rayfield:Notify({
-                   Title = "تم رسبن Frozen Dimension!",
-                   Content = "تم إيقاف الملاحة والتتبع بنجاح.",
+                   Title = "تم اكتشاف Frozen Dimension!",
+                   Content = "تم إيقاف الملاحة التلقائية وتأمين الموقع.",
                    Duration = 6,
                    Image = 4483362458,
                 })
