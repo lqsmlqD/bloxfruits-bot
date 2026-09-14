@@ -1,59 +1,84 @@
--- // 1. تحميل مكتبة Rayfield
+-- // 1. تحميل مكتبة Rayfield الشاملة
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "VX Leviathan Overlord V3 | Ultimate",
-   LoadingTitle = "جاري تحميل محرك القوة...",
+   Name = "VX Universal Hub V4 | Blox Fruits",
+   LoadingTitle = "جاري تحميل محرك VX الخارق...",
    LoadingSubtitle = "by VX Team",
    ConfigurationSaving = { Enabled = false }
 })
 
--- // 2. المتغيرات العامة
-getgenv().BoatSpeed = 180
-getgenv().BoatHeight = 35
-getgenv().AutoBuyBoat = false
+-- // 2. المتغيرات العامة (Global Settings)
+getgenv().AutoFarmLevel = false
+getgenv().BringMobs = true
+getgenv().FastAttackM1 = true
+getgenv().AutoStoreFruit = true
+getgenv().AutoRandomFruit = false
+
+getgenv().BoatSpeed = 200
 getgenv().SelectedBoat = "Beast Hunter"
-getgenv().AutoStopOnFrozen = true
 getgenv().AutoKillLeviathan = false
 getgenv().UseDragonSkills = true
-getgenv().UltraFastM1 = false
 getgenv().AutoHarpoonHeart = false
 getgenv().AutoReturnTiki = false
+
+getgenv().FruitESP = false
+getgenv().PlayerESP = false
 
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
+local TeleportService = game:GetService("TeleportService")
 local LocalPlayer = Players.LocalPlayer
 
--- // 3. إنشـاء الواجهة والتصنيفات
+-- // 3. إنشاء تبويبات الواجهة الشاملة
 
--- [تبويب إدارة السفن والملاحة]
-local BoatTab = Window:CreateTab("إدارة السفن والملاحة", 4483362458)
+-- [تبويب 1: التجميع التلقائي واللفل]
+local FarmTab = Window:CreateTab("التجميع واللفل", 4483362458)
 
-BoatTab:CreateDropdown({
-   Name = "اختر نوع السفينة",
-   Options = {"Beast Hunter", "Grand Brig", "Swamp Pirate", "Sloop"},
-   CurrentOption = {"Beast Hunter"},
-   Flag = "BoatType",
-   Callback = function(Option)
-       getgenv().SelectedBoat = typeof(Option) == "table" and Option[1] or Option
-   end,
+FarmTab:CreateToggle({
+   Name = "تفعيل التجميع التلقائي للـ Level (Auto Farm)",
+   CurrentValue = false,
+   Flag = "AutoFarmLevel",
+   Callback = function(Value) getgenv().AutoFarmLevel = Value end,
 })
 
-BoatTab:CreateButton({
-   Name = "شراء وقيادة السفينة تلقائياً الآن",
+FarmTab:CreateToggle({
+   Name = "تجميع الوحوش في نقطة واحدة (Bring Mobs)",
+   CurrentValue = true,
+   Flag = "BringMobs",
+   Callback = function(Value) getgenv().BringMobs = Value end,
+})
+
+FarmTab:CreateToggle({
+   Name = "Fast Attack خارق بدون أنيميشن (M1)",
+   CurrentValue = true,
+   Flag = "FastAttack",
+   Callback = function(Value) getgenv().FastAttackM1 = Value end,
+})
+
+-- [تبويب 2: حدث الليفايثن والصيد]
+local LeviTab = Window:CreateTab("قتال الليفايثن والصيد", 4483362458)
+
+LeviTab:CreateDropdown({
+   Name = "اختر السفينة",
+   Options = {"Beast Hunter", "Grand Brig", "Swamp Pirate"},
+   CurrentOption = {"Beast Hunter"},
+   Flag = "BoatType",
+   Callback = function(Option) getgenv().SelectedBoat = typeof(Option) == "table" and Option[1] or Option end,
+})
+
+LeviTab:CreateButton({
+   Name = "شراء وقيادة السفينة فوراً",
    Callback = function()
        pcall(function()
-           -- استدعاء ريموت شراء السفينة
            local comms = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommF_")
            if comms then
                comms:InvokeServer("BuyBoat", getgenv().SelectedBoat)
                task.wait(0.5)
-               -- البحث عن السفينة والجلوس بها
                for _, boat in pairs(workspace.Boats:GetChildren()) do
                    if boat:FindFirstChild("Owner") and boat.Owner.Value == LocalPlayer then
-                       if boat:FindFirstChild("VehicleSeat") and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+                       if boat:FindFirstChild("VehicleSeat") and LocalPlayer.Character then
                            LocalPlayer.Character.HumanoidRootPart.CFrame = boat.VehicleSeat.CFrame
                        end
                    end
@@ -63,71 +88,75 @@ BoatTab:CreateButton({
    end,
 })
 
-BoatTab:CreateSlider({
-   Name = "سرعة طيران السفينة (سلسة بدون لاق)",
-   Range = {50, 450},
-   Increment = 10,
-   Suffix = "Speed",
-   CurrentValue = 180,
-   Flag = "BoatSpeed",
-   Callback = function(Value) getgenv().BoatSpeed = Value end,
-})
-
-BoatTab:CreateToggle({
-   Name = "إيقاف الحركة عند رسبن Frozen Dimension",
-   CurrentValue = true,
-   Flag = "AutoStop",
-   Callback = function(Value) getgenv().AutoStopOnFrozen = Value end,
-})
-
--- [تبويب الهجوم الخارق والمهارات]
-local AttackTab = Window:CreateTab("نظام القتال والسلاح", 4483362458)
-
-AttackTab:CreateToggle({
-   Name = "تفعيل قتل الليفايثن والذيل تلقائياً (Auto Kill)",
+LeviTab:CreateToggle({
+   Name = "تفعيل قتال وتتبع ذيل الليفايثن (Auto Kill)",
    CurrentValue = false,
-   Flag = "AutoKill",
+   Flag = "AutoKillLevi",
    Callback = function(Value) getgenv().AutoKillLeviathan = Value end,
 })
 
-AttackTab:CreateToggle({
-   Name = "Fast Attack خفيف بدون لاق (ملاحة بحرية وسريعة)",
-   CurrentValue = false,
-   Flag = "UltraFastM1",
-   Callback = function(Value) getgenv().UltraFastM1 = Value end,
-})
-
-AttackTab:CreateToggle({
+LeviTab:CreateToggle({
    Name = "إطلاق مهارات Dragon / Dragon Storm تلقائياً",
    CurrentValue = true,
-   Flag = "UseSkills",
+   Flag = "UseDragonSkills",
    Callback = function(Value) getgenv().UseDragonSkills = Value end,
 })
 
--- [تبويب صيد وتأمين القلب]
-local HeartTab = Window:CreateTab("صيد القلب والتأمين", 4483362458)
-
-HeartTab:CreateToggle({
-   Name = "صيد وسحب القلب تلقائياً (Auto Catch)",
+LeviTab:CreateToggle({
+   Name = "صيد وسحب القلب تلقائياً بالرمح",
    CurrentValue = false,
    Flag = "AutoCatchHeart",
    Callback = function(Value) getgenv().AutoHarpoonHeart = Value end,
 })
 
-HeartTab:CreateToggle({
+LeviTab:CreateToggle({
    Name = "العودة بالقلب تلقائياً لـ Tiki Outpost",
    CurrentValue = false,
    Flag = "AutoReturnTiki",
    Callback = function(Value) getgenv().AutoReturnTiki = Value end,
 })
 
--- // 4. المحركات المتقدمة (Lightweight Engines)
+-- [تبويب 3: الفواكه والأسلحة]
+local FruitTab = Window:CreateTab("الفواكه والأسلحة", 4483362458)
 
--- محرك Fast Attack الخفيف بدون تقطيع أو اللاق
+FruitTab:CreateToggle({
+   Name = "تخزين الفواكه آلياً في الشنطة (Auto Store)",
+   CurrentValue = true,
+   Flag = "AutoStore",
+   Callback = function(Value) getgenv().AutoStoreFruit = Value end,
+})
+
+FruitTab:CreateToggle({
+   Name = "شراء فاكهة عشوائية آلياً (Random Fruit)",
+   CurrentValue = false,
+   Flag = "RandomFruit",
+   Callback = function(Value) getgenv().AutoRandomFruit = Value end,
+})
+
+-- [تبويب 4: الرادار والتنقل بين السيرفرات]
+local MiscTab = Window:CreateTab("الرادار والسيرفرات", 4483362458)
+
+MiscTab:CreateToggle({
+   Name = "كاشف موقع الفواكه الساقطة (Fruit ESP)",
+   CurrentValue = false,
+   Flag = "FruitESP",
+   Callback = function(Value) getgenv().FruitESP = Value end,
+})
+
+MiscTab:CreateButton({
+   Name = "تغيير السيرفر فوراً (Server Hop)",
+   Callback = function()
+       TeleportService:Teleport(game.PlaceId, LocalPlayer)
+   end,
+})
+
+-- // 4. المحركات والوظائف الشاملة (Universal Logic Engines)
+
+-- محرك Fast Attack الخفيف السريع
 task.spawn(function()
     while true do
-        task.wait(0.03) -- سرعة متوافقة تجنب طرد الـ Anti-Cheat
-        if getgenv().UltraFastM1 then
+        task.wait(0.02)
+        if getgenv().FastAttackM1 then
             pcall(function()
                 local tool = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool")
                 if tool then
@@ -138,7 +167,7 @@ task.spawn(function()
     end
 end)
 
--- محرك القتال والتمركز الذكي فوق أجزاء وذيل الليفايثن
+-- محرك قتال الليفايثن وإطلاق المهارات
 task.spawn(function()
     while true do
         task.wait(0.05)
@@ -157,7 +186,6 @@ task.spawn(function()
                 end
 
                 if targetPart and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    -- الوقوف بمسافة آمنة لتفادي الضرر وتسهيل إصابة المهارات
                     LocalPlayer.Character.HumanoidRootPart.CFrame = targetPart.CFrame * CFrame.new(0, 28, 0)
                     
                     if getgenv().UseDragonSkills then
@@ -174,7 +202,26 @@ task.spawn(function()
     end
 end)
 
--- محرك صيد وسحب القلب والعودة الآلية لـ Tiki
+-- محرك إدارة وتخزين الفواكه
+task.spawn(function()
+    while true do
+        task.wait(2)
+        if getgenv().AutoStoreFruit then
+            pcall(function()
+                for _, tool in pairs(LocalPlayer.Backpack:GetChildren()) do
+                    if tool.Name:find("Fruit") then
+                        local comms = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommF_")
+                        if comms then
+                            comms:InvokeServer("StoreFruit", tool.Name, tool)
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+-- محرك صيد القلب والعودة لـ Tiki Outpost
 task.spawn(function()
     local tikiCoords = Vector3.new(-16200, 20, 4500)
     while true do
@@ -190,17 +237,17 @@ task.spawn(function()
                     local distance = (boatPrimary.Position - heartPos.Position).Magnitude
                     
                     if distance > 40 then
-                        local linVel = boatPrimary:FindFirstChild("VX_Velocity") or Instance.new("LinearVelocity")
+                        local linVel = boatPrimary:FindFirstChild("VX_Vel") or Instance.new("LinearVelocity")
                         local attachment = boatPrimary:FindFirstChild("RootAttachment") or Instance.new("Attachment", boatPrimary)
                         
-                        linVel.Name = "VX_Velocity"
+                        linVel.Name = "VX_Vel"
                         linVel.MaxForce = 1e6
                         linVel.VectorVelocity = (heartPos.Position - boatPrimary.Position).Unit * getgenv().BoatSpeed
                         linVel.Attachment0 = attachment
                         linVel.Parent = boatPrimary
                     else
-                        if boatPrimary:FindFirstChild("VX_Velocity") then
-                            boatPrimary.VX_Velocity.VectorVelocity = Vector3.zero
+                        if boatPrimary:FindFirstChild("VX_Vel") then
+                            boatPrimary.VX_Vel.VectorVelocity = Vector3.zero
                         end
                         
                         local harpoon = LocalPlayer.Backpack:FindFirstChild("Harpoon") or LocalPlayer.Character:FindFirstChild("Harpoon")
@@ -211,7 +258,7 @@ task.spawn(function()
                         
                         if getgenv().AutoReturnTiki then
                             task.wait(1)
-                            local linVel = boatPrimary:FindFirstChild("VX_Velocity")
+                            local linVel = boatPrimary:FindFirstChild("VX_Vel")
                             if linVel then
                                 linVel.VectorVelocity = (tikiCoords - boatPrimary.Position).Unit * getgenv().BoatSpeed
                             end
@@ -219,26 +266,6 @@ task.spawn(function()
                     end
                 end
             end)
-        end
-    end
-end)
-
--- كاشف وإيقاف Frozen Dimension
-task.spawn(function()
-    while true do
-        task.wait(0.5)
-        if getgenv().AutoStopOnFrozen then
-            local frozenZone = workspace:FindFirstChild("Frozen Dimension") or workspace.Map:FindFirstChild("Frozen Dimension")
-            if frozenZone then
-                getgenv().AutoKillLeviathan = false
-                Rayfield:Notify({
-                   Title = "تم اكتشاف Frozen Dimension!",
-                   Content = "تم إيقاف الملاحة التلقائية وتأمين الموقع.",
-                   Duration = 6,
-                   Image = 4483362458,
-                })
-                break
-            end
         end
     end
 end)
