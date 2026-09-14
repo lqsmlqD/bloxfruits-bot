@@ -1,8 +1,18 @@
--- // 1. تحميل مكتبة Kavo UI
-local Kavo = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Kavo.CreateLib("VX HUB | STEAL AN EGG (FIXED)", "DarkTheme")
+-- // 1. تحميل مكتبة Fluent UI العصريّة والمطورة
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
--- // 2. المتغيرات العامة
+-- // 2. إنشاء النافذة الرئيسية العصرية (قابل للتكبير والتصغير والسحب)
+local Window = Fluent:CreateWindow({
+    Title = "VX HUB | STEAL AN EGG",
+    SubTitle = "Ultimate Edition V2",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(530, 350),
+    Acrylic = true, -- تأثير الزجاج المضبب العصري
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+-- // 3. المتغيرات العامة (Settings)
 getgenv().FastEggGrab = true
 getgenv().GodModeEgg = false
 getgenv().WalkSpeedValue = 16
@@ -10,34 +20,48 @@ getgenv().WalkSpeedValue = 16
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local ProximityPromptService = game:GetService("ProximityPromptService")
-local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
--- // 3. التبويبات والأزرار
+-- // 4. إنشاء التبويبات والميزات (Tabs & Options)
 
--- [تبويب 1: الميزات الأساسية]
-local MainTab = Window:NewTab("الميزات الأساسية")
-local MainSection = MainTab:NewSection("سرقة وتأمين البيض")
+local Tabs = {
+    Main = Window:AddTab({ Title = "الرئيسية", Icon = "egg" }),
+    Speed = Window:AddTab({ Title = "السرعة والتنقل", Icon = "zap" })
+}
 
-MainSection:NewToggle("حمل البيض السريع (Instant E Grab)", "تجاوز وقت الانتظار", function(state)
-    getgenv().FastEggGrab = state
-end)
+-- [ميزات سرقة وتأمين البيض]
+Tabs.Main:AddToggle("FastGrab", {
+    Title = "حمل البيض السريع (Instant E Grab)",
+    Default = true,
+    Callback = function(Value)
+        getgenv().FastEggGrab = Value
+    end
+})
 
-MainSection:NewToggle("حماية البيض والشخصية (Egg Protection)", "إلغاء الضرر لمنع إسقاط البيض", function(state)
-    getgenv().GodModeEgg = state
-end)
+Tabs.Main:AddToggle("GodEgg", {
+    Title = "حماية البيض والشخصية (Egg Protection)",
+    Default = false,
+    Callback = function(Value)
+        getgenv().GodModeEgg = Value
+    end
+})
 
--- [تبويب 2: التحكم بالسرعة]
-local SpeedTab = Window:NewTab("السرعة والتنقل")
-local SpeedSection = SpeedTab:NewSection("سرعة الشخصية")
+-- [ميزات التحكم بالسرعة]
+Tabs.Speed:AddSlider("WalkSpeedSlider", {
+    Title = "سرعة المشي (WalkSpeed)",
+    Description = "تحديد السرعة من 0 إلى 1000",
+    Default = 16,
+    Min = 0,
+    Max = 1000,
+    Rounding = 0,
+    Callback = function(Value)
+        getgenv().WalkSpeedValue = Value
+    end
+})
 
-SpeedSection:NewSlider("سرعة المشي (WalkSpeed)", "من 0 إلى 1000", 1000, 0, function(v)
-    getgenv().WalkSpeedValue = v
-end)
+-- // 5. المحركات والوظائف الخلفية (Engine Logic)
 
--- // 4. المحركات والوظائف الخلفية (Engine Logic)
-
--- سحب البيض الفوري
+-- حشو التفاعل السريع للبيض عند ضغط E
 ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
     if getgenv().FastEggGrab then
         pcall(function()
@@ -46,7 +70,7 @@ ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
     end
 end)
 
--- حلقة تفعيل السرعة وحماية الشخصية
+-- حلقة تفعيل السرعة والحماية بدون لاق
 RunService.RenderStepped:Connect(function()
     pcall(function()
         if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -63,76 +87,37 @@ RunService.RenderStepped:Connect(function()
     end)
 end)
 
--- // 5. تفعيل سحب الواجهة + الزر العائم (Draggable UI & Floating Button)
+-- // 6. إنشـاء الزر العائم العصري للتصغير والتكبير (Floating Drag Button)
 
--- دالة جعل أي نافذة قابلة للتحريك والسحب باللمس أو الماوس
-local function makeDraggable(gui)
-    local dragging, dragInput, dragStart, startPos
-    local function update(input)
-        local delta = input.Position - dragStart
-        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-    gui.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            dragging = true
-            dragStart = input.Position
-            startPos = gui.Position
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
-                end
-            end)
-        end
-    end)
-    gui.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-    UserInputService.InputChanged:Connect(function(input)
-        if input == dragInput and dragging then
-            update(input)
-        end
-    end)
-end
-
--- تطبيق خيار السحب على شاشة الواجهة الرئيسية
-task.spawn(function()
-    local coreGui = game:GetService("CoreGui")
-    local uiFrame = coreGui:FindFirstChild("KavoUI") or coreGui:FindFirstChild("DarkTheme")
-    if uiFrame then
-        for _, child in pairs(uiFrame:GetChildren()) do
-            if child:IsA("Frame") then
-                makeDraggable(child)
-            end
-        end
-    end
-end)
-
--- الزر العائم للتصغير والتكبير
+local CoreGui = game:GetService("CoreGui")
 local ScreenGui = Instance.new("ScreenGui")
-local ToggleButton = Instance.new("TextButton")
+local ToggleBtn = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
 
-ScreenGui.Name = "VX_Toggle_Gui"
-ScreenGui.Parent = game:GetService("CoreGui") or LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "VX_Modern_Gui"
+ScreenGui.Parent = CoreGui or LocalPlayer:WaitForChild("PlayerGui")
 
-ToggleButton.Name = "ToggleButton"
-ToggleButton.Parent = ScreenGui
-ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 150)
-ToggleButton.Position = UDim2.new(0.05, 0, 0.2, 0)
-ToggleButton.Size = UDim2.new(0, 45, 0, 45)
-ToggleButton.Text = "VX"
-ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-ToggleButton.TextSize = 16.0
-ToggleButton.Font = Enum.Font.SourceSansBold
-ToggleButton.Active = true
+ToggleBtn.Name = "VX_Toggle"
+ToggleBtn.Parent = ScreenGui
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+ToggleBtn.Position = UDim2.new(0.08, 0, 0.15, 0)
+ToggleBtn.Size = UDim2.new(0, 50, 0, 50)
+ToggleBtn.Text = "VX"
+ToggleBtn.TextColor3 = Color3.fromRGB(0, 255, 150)
+ToggleBtn.TextSize = 18
+ToggleBtn.Font = Enum.Font.GothamBold
+ToggleBtn.Active = true
+ToggleBtn.Draggable = true -- زر عائم قابل للسحب في أي مكان على الشاشة
 
-UICorner.CornerRadius = UDim.new(0, 10)
-UICorner.Parent = ToggleButton
+UICorner.CornerRadius = UDim.new(0, 14)
+UICorner.Parent = ToggleBtn
 
-makeDraggable(ToggleButton)
+UIStroke.Color = Color3.fromRGB(0, 255, 150)
+UIStroke.Thickness = 1.5
+UIStroke.Parent = ToggleBtn
 
-ToggleButton.MouseButton1Click:Connect(function()
-    Kavo:ToggleUI()
+-- وظيفة زر التخفي والتكبير للواجهة
+ToggleBtn.MouseButton1Click:Connect(function()
+    Window:Minimize()
 end)
